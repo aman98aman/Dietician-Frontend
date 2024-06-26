@@ -51,31 +51,6 @@ const Signup = () => {
         return;
       }
 
-      // Send POST request to backend for signup
-      // const response = await fetch("http://localhost:5000/api/signup", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify(formData),
-      //   credentials: "include", // Include credentials (cookies) in the request
-      // });
-
-      // const data = await response.json();
-
-      // if (response.ok) {
-      //   // Handle success response and store token in cookie then redirect to login page
-      //   document.cookie = `token=${data.token}; path=/`; // Store token in a cookie named "token"
-      //   toast.success(data.message);
-      //   navigate("/auth/login");
-      // } else {
-      //   // Handle error response and display error message using toast.error()
-      //   toast.error(data.error);
-      // }
-
-      // document.cookie = `token=${formData.email.token}; path=/`; // Store token in a cookie named "token"
-      // toast.success("You are registered navigating to login page");
-      // navigate("/auth/login");
       navigate("/UserDetailForm", { state: { key: formData } });
 
     } catch (error) {

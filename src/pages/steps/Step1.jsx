@@ -31,6 +31,7 @@ function Step1({ handleChange }) {
                 name="gender"
                 value={formData.gender}
                 onChange={handleInputChange}
+                required={true}
               />
             </div>
             <div className="w-full p-1.5 sm:w-1/2">
@@ -41,6 +42,7 @@ function Step1({ handleChange }) {
                 name="age"
                 value={formData.age}
                 onChange={handleInputChange}
+                required={true}
               />
             </div>
             <div className="w-full p-1.5 sm:w-1/2">
@@ -51,6 +53,7 @@ function Step1({ handleChange }) {
                 name="height"
                 value={formData.height}
                 onChange={handleInputChange}
+                required={true}
               />
             </div>
 
@@ -62,6 +65,7 @@ function Step1({ handleChange }) {
                 name="weight"
                 value={formData.weight}
                 onChange={handleInputChange}
+                required={true}
               />
             </div>
           </div>

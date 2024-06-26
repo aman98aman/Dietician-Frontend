@@ -47,9 +47,10 @@ const SingleUser = () => {
     const [selectedButton, setSelectedButton] = useState(null);
     const [showOptions, setShowOptions] = useState(false);
     const [showOptionData, setShowOptionData] = useState([])
+    const [loadingImages, setLoadingImages] = useState(false);
 
 
-    console.log("new recommended diet is", recommendedMeal);
+    console.log("new progressImage is", progressImage);
 
 
     async function handleRecommendedDiet() {
@@ -115,90 +116,90 @@ const SingleUser = () => {
     }
 
     function updateMealName(firstDataObject, secondDataObject, thirdDataObject, fourthIndexNumber, newName) {
-        try{
-        let newObj = JSON.parse(JSON.stringify(recommendedMeal));;
-        newObj[firstDataObject][secondDataObject][thirdDataObject][fourthIndexNumber].name = newName;
-        setrecommendedMeal(newObj);
-        toast.success("Successfully updated")
-        }catch(error){
+        try {
+            let newObj = JSON.parse(JSON.stringify(recommendedMeal));;
+            newObj[firstDataObject][secondDataObject][thirdDataObject][fourthIndexNumber].name = newName;
+            setrecommendedMeal(newObj);
+            toast.success("Successfully updated")
+        } catch (error) {
             toast.error("Got some error", error);
         }
 
     }
 
     function deleteMeals(firstDataObject, secondDataObject, thirdDataObject, fourthIndexNumber) {
-        try{
-        let newObj = JSON.parse(JSON.stringify(recommendedMeal));                                     //{...recommendedMeal}; 
-        newObj[firstDataObject][secondDataObject][thirdDataObject] = newObj[firstDataObject][secondDataObject][thirdDataObject].filter((_, index) => {
+        try {
+            let newObj = JSON.parse(JSON.stringify(recommendedMeal));                                     //{...recommendedMeal}; 
+            newObj[firstDataObject][secondDataObject][thirdDataObject] = newObj[firstDataObject][secondDataObject][thirdDataObject].filter((_, index) => {
 
-            if (index == fourthIndexNumber) {
-                return false;
-            }
-            return true;
-        })
-        setrecommendedMeal(newObj);
-        toast.success("Successfully deleted");
-    }catch(error){
-        toast.error("Got some error", error);
-    }
+                if (index == fourthIndexNumber) {
+                    return false;
+                }
+                return true;
+            })
+            setrecommendedMeal(newObj);
+            toast.success("Successfully deleted");
+        } catch (error) {
+            toast.error("Got some error", error);
+        }
     }
 
     function addMeal(firstDataObject, secondDataObject, thirdDataObject) {
-        try{
-        let newMeal = {
-            name: "Random pls Change",
-            ingredients: [
-                {
-                    item: "",
+        try {
+            let newMeal = {
+                name: "Random pls Change",
+                ingredients: [
+                    {
+                        item: "",
+                        protein: "",
+                        fat: "",
+                        carbs: "",
+                        calories: ""
+                    }
+                ],
+                total: {
                     protein: "",
                     fat: "",
                     carbs: "",
                     calories: ""
                 }
-            ],
-            total: {
-                protein: "",
-                fat: "",
-                carbs: "",
-                calories: ""
             }
+            let newObj = JSON.parse(JSON.stringify(recommendedMeal));;
+            newObj[firstDataObject][secondDataObject][thirdDataObject].push(newMeal);
+            setrecommendedMeal(newObj);
+            toast.success("Succesfuly added in the last")
+        } catch (error) {
+            toast.error("Got some error")
         }
-        let newObj = JSON.parse(JSON.stringify(recommendedMeal));;
-        newObj[firstDataObject][secondDataObject][thirdDataObject].push(newMeal);
-        setrecommendedMeal(newObj);
-        toast.success("Succesfuly added in the last")
-    }catch(error){
-        toast.error("Got some error")
-    }
     }
 
 
 
     const handleSelectChange = (e) => {
-        try{
-        const selectedMeal = totalMeals.filter((meal) => meal.categoryName === e.target.value)
-        setrecommendedMeal(selectedMeal[0]);
-        let options = Object.keys(selectedMeal[0]);
-        let optionsData = options.filter((value) => {
-            if (value == "_id" || value == "categoryName" || value == "__v") {
-                return false;
-            }
-            return true;
-        })
-        setShowOptions(true)
-        setShowOptionData(optionsData);
-    }catch(error){
-        toast.error("Got some error", error);
-    }
+        try {
+            const selectedMeal = totalMeals.filter((meal) => meal.categoryName === e.target.value)
+            setrecommendedMeal(selectedMeal[0]);
+            let options = Object.keys(selectedMeal[0]);
+            let optionsData = options.filter((value) => {
+                if (value == "_id" || value == "categoryName" || value == "__v") {
+                    return false;
+                }
+                return true;
+            })
+            setShowOptions(true)
+            setShowOptionData(optionsData);
+        } catch (error) {
+            toast.error("Got some error", error);
+        }
 
     };
 
     const handleOptionChange = (e) => {
-        try{
-        setSelectedButton(e.target.name);
-    }catch(error){
-        toast.error("Got some error",error);
-    }
+        try {
+            setSelectedButton(e.target.name);
+        } catch (error) {
+            toast.error("Got some error", error);
+        }
     }
 
     const height = location.state.userData.height / 100
@@ -215,22 +216,24 @@ const SingleUser = () => {
 
     useEffect(() => {
         async function fetchImage() {
-            console.log("email is", location.state.userData.email)
+            //console.log("email is", location.state.userData.email)
             try {
+                setLoadingImages(true);
                 const res = await fetch("http://localhost:3333/users/getUsersPic", {
                     method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
                     body: JSON.stringify({ email: location.state.userData.email })
                 });
 
                 const resJson = await res.json();
-                //console.log("Res.json in the single user is", resJson);
+                console.log("Res.json in the single user is", resJson);
 
-                if (resJson.success) {
-                    setProgressImages(resJson.data);
 
-                } else {
-                    toast.error("got some problem", e);
-                }
+                setProgressImages(resJson.data);
+
+                setLoadingImages(false);
 
             } catch (e) {
                 toast.error("Got some error", e)
@@ -409,9 +412,12 @@ const SingleUser = () => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
-                    {progressImage.map((value) => {
-                        return <ImageComponent gifData={value.img.data.data} />
-                    })}
+                    {
+
+                        (loadingImages) ? <div>Loading images...!!</div> : (progressImage.length == 0) ? <div>No images uploaded</div> : progressImage.map((value) => {
+                            return <ImageComponent gifData={value.img.data.data} />
+                        })
+                    }
                 </div>
             </section>
 

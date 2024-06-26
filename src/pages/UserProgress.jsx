@@ -21,7 +21,7 @@ const UserProgress = () => {
 
   const [weight, setWeight] = useState(decoded.userData.weight);
 
-  console.log("decoded jwt in the userprogress component", decoded)
+ 
 
   async function getBMI() {
     try {
@@ -42,30 +42,32 @@ const UserProgress = () => {
     getBMI();
   }, []);
 
+
   async function handleUpload(e) {
     console.log("Inside handle upload file and value is", e);
-
+  
     try {
       const formData = new FormData();
       formData.append('image', e.target.files[0]);
       formData.append('email', JSON.stringify(decoded.userData.email));
       formData.append('weight', JSON.stringify(weight));
-
+  
       const res = await fetch("http://localhost:3333/users/uploadpic", {
         method: "POST",
         body: formData
       });
-
+  
       const resJson = await res.json();
-
+  
       if (resJson.success) {
-        toast.message("Successfully uploaded image");
+        toast.success("Successfully uploaded image"); // Display success message
       } else {
-        toast.error("got some problem", e);
+        toast.error("Upload failed"); // Display error message if success is false
       }
-
-    } catch (e) {
-      toast.error("Got some error", e)
+  
+    } catch (error) {
+      console.error("Error during upload:", error);
+      toast.error("Failed to upload image"); // Display error message for catch block
     }
   }
 
