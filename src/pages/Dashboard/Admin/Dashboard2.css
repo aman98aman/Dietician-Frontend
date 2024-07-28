@@ -1,0 +1,127 @@
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    width: 25px;
+    background-color: #f8f8f8;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  }
+  
+  .sidebar-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .links-section {
+    margin-bottom: 20px;
+  }
+  
+  .section-header {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    transition: color 0.3s;
+  }
+  
+  .nav-link:hover {
+    color: #4a90e2;
+  }
+  
+  .icon {
+    margin-right: 10px;
+    font-size: 20px;
+  }
+  
+  .icon-active {
+    margin-left: 5px;
+  }
+  
+  .content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #ffffff;
+  }
+  
+  .content-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .content-title {
+    font-size: 36px;
+    font-weight: bold;
+  }
+  
+  .content-subtitle {
+    font-size: 20px;
+    font-weight: normal;
+    margin-left: 20px;
+  }
+  
+  .content-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .content-buttons button,
+  .save-button {
+    padding: 5px 15px;
+    background-color: #e7e7e7;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .content-buttons button:hover,
+  .save-button:hover {
+    background-color: #d4d4d4;
+  }
+  
+  .save-button {
+    background-color: #c7e8c8;
+  }
+  
+  .stretching-table-section {
+    margin-top: 20px;
+  }
+  
+  .stretching-table {
+    width: 20%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+  }
+  
+  .stretching-table th,
+  .stretching-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .table-notes {
+    font-size: 14px;
+    color: #777;
+  }
+  
