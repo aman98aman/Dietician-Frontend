@@ -9,7 +9,7 @@ import DashBoard2 from "./Dashboard2";
 
 const Diet = () => (
   <div className="flex flex-row">
-    <Sidebar />
+    {/* <Sidebar /> */}
     
     <div className="flex flex-col">
     <DashBoard2 />

@@ -7,11 +7,12 @@ import Sidebar from './Sidebar';
 function Dashboard2() {
     return (
       <div className="dashboard-container">
-        {/* <Sidebar /> */}
+        <Sidebar />
         <div className="content">
           <header className="content-header">
+            <div>
             <h1 className="content-title">DIET</h1>
-            <h2 className="content-subtitle">non veg weight loss</h2>
+            <span className="content-subtitle">non veg weight loss</span></div>
             <div className="content-buttons">
               <button>Warm up</button>
               <button>Cardio</button>

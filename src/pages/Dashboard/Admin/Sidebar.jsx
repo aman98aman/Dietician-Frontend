@@ -58,7 +58,7 @@ function Links() {
         >
           {({ isActive }) => (
             <>
-             <img src={VegeIcon} alt="Diet Icon" className="mr-3 w-6 h-6" />
+             <img src={VegeIcon} alt="Diet Icon" className="mr-3 w-6 h-6" style={{width: "26px"}}/>
               Diet
               <i
                 className={isActive ? "ai ai-arrow-right ml-3" : "hidden"}
@@ -110,7 +110,7 @@ function Links() {
 function Sidebar() {
 
   return (
-    <nav style={{width: "15%"}}
+    <nav 
       className={
         "text-black shadow-lg lg:block lg:h-screen lg:sticky lg:left-0 lg:top-0 md:flex md:w-screen md:fixed lg:w-full"
         // "hidden min-h-svh max-w-80 rounded-3xl bg-white shadow-lg lg:sticky lg:left-0 lg:top-0 lg:block"
@@ -122,7 +122,7 @@ function Sidebar() {
       >
         <i className="ai ai-x-bold text-2xl"></i>
       </button>
-      <div className="flex items-center p-4 pt-6" style={{width: "95%"}}> 
+      <div className="flex items-center p-4 pt-6" style={{width: "95px"}}> 
         <img
           className="bg-slate-10 mx-2 h-16 w-16 rounded-full border"
           src="https://static.vecteezy.com/system/resources/previews/019/900/306/non_2x/happy-young-cute-illustration-face-profile-png.png"
