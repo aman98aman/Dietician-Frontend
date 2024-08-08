@@ -93,7 +93,7 @@ const Navbar = () => {
               <li className="py-2 lg:py-0 ">
                 <a
                   className="py-2 px-3 hover:border-b-4 hover:rounded-md hover:border-slate-300-400 hover:bg-red-600 dark:hover:bg-gray-300 dark:hover:text-slate-950"
-                  href="#plans"
+                  href="#planss"
                 >
                   Plans
                 </a>
@@ -101,7 +101,8 @@ const Navbar = () => {
               <li className="py-2 lg:py-0 ">
                 <a
                   className="py-2 px-3 hover:border-b-4 hover:rounded-md hover:border-slate-300-400 hover:bg-red-600 dark:hover:bg-gray-300 dark:hover:text-slate-950"
-                  href="#"
+                  href="https://wa.me/1234567890"
+                  target="blank"
                 >
                   Contact
                 </a>

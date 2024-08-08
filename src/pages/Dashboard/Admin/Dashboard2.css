@@ -1,127 +1,100 @@
 .dashboard-container {
-    display: flex;
-    height: 100vh;
-  }
-  
-  .sidebar {
-    width: 25px;
-    background-color: #f8f8f8;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-  }
-  
-  .sidebar-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .profile-img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-  
-  .links-section {
-    margin-bottom: 20px;
-  }
-  
-  .section-header {
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .nav-link {
-    display: flex;
-    align-items: center;
-    padding: 10px 0;
-    text-decoration: none;
-    color: #333;
-    font-size: 16px;
-    transition: color 0.3s;
-  }
-  
-  .nav-link:hover {
-    color: #4a90e2;
-  }
-  
-  .icon {
-    margin-right: 10px;
-    font-size: 20px;
-  }
-  
-  .icon-active {
-    margin-left: 5px;
-  }
-  
-  .content {
-    flex-grow: 1;
-    padding: 20px;
-    background-color: #ffffff;
-  }
-  
-  .content-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-  
-  .content-title {
-    font-size: 36px;
-    font-weight: bold;
-  }
-  
-  .content-subtitle {
-    font-size: 20px;
-    font-weight: normal;
-    margin-left: 20px;
-  }
-  
-  .content-buttons {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .content-buttons button,
-  .save-button {
-    padding: 5px 15px;
-    background-color: #e7e7e7;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-  
-  .content-buttons button:hover,
-  .save-button:hover {
-    background-color: #d4d4d4;
-  }
-  
-  .save-button {
-    background-color: #c7e8c8;
-  }
-  
-  .stretching-table-section {
-    margin-top: 20px;
-  }
-  
-  .stretching-table {
-    width: 20%;
-    border-collapse: collapse;
-    margin-bottom: 10px;
-  }
-  
-  .stretching-table th,
-  .stretching-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-  }
-  
-  .table-notes {
-    font-size: 14px;
-    color: #777;
-  }
-  
+  padding: 20px;
+}
+
+.content-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.content-subtitle {
+  font-size: 1.5rem;
+  margin: 10px 0;
+}
+
+.diet-container {
+  display: flex;
+  align-items: center; /* Ensure input field aligns with the title */
+  gap: 10px; /* Space between title and input */
+}
+
+.diet-input {
+  font-size: 1.5rem;
+  padding: 5px;
+  z-index:111111;
+  border-radius: 5px;
+  border: 1px  #ccc; /* Add border to make input visible */
+  width: 100%;
+  max-width: 300px; /* Adjust as needed */
+}
+
+.content-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px; /* Add margin to separate from the title */
+}
+
+.content-buttons button {
+  padding: 5px 15px;
+  background-color: #e7e7e7;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  z-index: 1; /* Ensure buttons are clickable */
+}
+
+.content-buttons button:hover {
+  background-color: #d4d4d4;
+}
+
+.save-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  margin-top: 7px;
+  cursor: pointer;
+  border-radius: 5px;
+  z-index: 1; /* Ensure save button is clickable */
+}
+
+.save-button:hover {
+  background-color: #0056b3;
+}
+
+.stretching-table-section {
+  margin-top: 20px;
+}
+
+.stretching-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.stretching-table th,
+.stretching-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.stretching-table th {
+  background-color: #f4f4f4;
+}
+
+.table-notes {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.content-title {
+  display: inline;
+   margin: 0; 
+}

@@ -38,7 +38,7 @@ function Links() {
         <NavLink
 
           className="flex items-center py-2 text-lg hover:text-indigo-700"
-          to="Users"
+          to="/dashboard/admin/Users"
         >
           {({ isActive }) => (
             <>
@@ -54,7 +54,7 @@ function Links() {
         <NavLink
 
           className="flex items-center py-2 text-lg hover:text-indigo-700"
-          to="Diet"
+          to="/dashboard/admin/Diet"
         >
           {({ isActive }) => (
             <>
@@ -73,7 +73,7 @@ function Links() {
         <NavLink
 
           className={"flex items-center py-2 text-lg hover:text-indigo-700"}
-          to="requests"
+          to="/dashboard/admin/requests"
         >
           {({ isActive }) => (
             <>
@@ -107,12 +107,12 @@ function Links() {
   );
 }
 
-function Sidebar() {
+function Sidebar2() {
 
   return (
     <nav style={{width: "17%"}}
       className={
-        "text-black shadow-lg lg:block lg:h-screen  lg:left-0 lg:top-0 md:flex md:w-screen md:fixed lg:w-full"
+        "text-black shadow-lg lg:block lg:h-screen lg:sticky lg:left-0 lg:top-0 md:flex md:w-screen md:fixed lg:w-full"
         // "hidden min-h-svh max-w-80 rounded-3xl bg-white shadow-lg lg:sticky lg:left-0 lg:top-0 lg:block"
       }
     >
@@ -139,4 +139,4 @@ function Sidebar() {
   );
 }
 
-export default Sidebar;
+export default Sidebar2;

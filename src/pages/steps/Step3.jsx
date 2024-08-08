@@ -74,25 +74,33 @@ function Step3({ handleChange }) {
               />
             </div>
             <div className="w-full p-1.5 sm:w-1/2">
-              <input
+              <select
                 className="h-10 w-full rounded-md border-gray-300 bg-slate-200 px-3 py-2 text-sm placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1"
                 type="text"
                 placeholder="Do you have any health issues?"
                 name="healthIssues"
                 value={formData.healthIssues}
                 onChange={handleInputChange}
-              />
+              >
+              <option value="" disabled selected>Do you have any health issues?</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+              </select>
             </div>
 
             <div className="w-full p-1.5 sm:w-1/2">
-              <input
+              <select
                 className="h-10 w-full rounded-md border-gray-300 bg-slate-200 px-3 py-2 text-sm placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1"
                 type="text"
                 placeholder="Taking any medicines"
                 name="medicines"
                 value={formData.medicines}
                 onChange={handleInputChange}
-              />
+              >
+              <option value="" disabled selected>Taking any medicines</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+              </select>
             </div>
           </div>
         </div>

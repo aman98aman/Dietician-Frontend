@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image2 from "../assets/bg-1.jpg";
 import Image3 from "../assets/bg-2.jpg";
 import Image4 from "../assets/bg-3.jpg";
@@ -10,12 +10,20 @@ const Carousel = () => {
   const images = [Image1, Image2, Image3, Image4, Image5];
 
   const nextSlide = () => {
-    setCurrentSlide((currentSlide + 1) % images.length);
+    setCurrentSlide((previous) => {
+      return (previous + 1) % images.length;
+    });
   };
 
   const prevSlide = () => {
     setCurrentSlide((currentSlide - 1 + images.length) % images.length);
   };
+  useEffect( () => {
+    setInterval(() => {
+      nextSlide();
+      console.log("next")
+    }, 3000);
+  }, []);
 
   return (
     <div className="relative w-full" id="section1">

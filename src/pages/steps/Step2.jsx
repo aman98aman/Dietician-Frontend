@@ -60,46 +60,61 @@ function Step2({ handleChange }) {
 
 
             <div className="w-full p-1.5 sm:w-1/2">
-              <input
+              <select
                 className="h-10 w-full rounded-md border-gray-300 bg-slate-200 px-3 py-2 text-sm placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1"
                 type="text"
                 placeholder="Daily Breakfast"
-                name="dailyBreakfast"
+                name="dailyBreakfast">
                 value={formData.breakfast}
                 onChange={handleInputChange}
-              />
+              <option value="" disabled selected>Daily Breakfast</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+              </select>
+
             </div>
 
             
             <div className="w-full p-1.5 sm:w-1/2">
-              <input
+              <select
                 className="h-10 w-full rounded-md border-gray-300 bg-slate-200 px-3 py-2 text-sm placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1"
                 type="text"
                 placeholder="Daily Lunch"
                 name="dailyLunch"
                 value={formData.lunch}
                 onChange={handleInputChange}
-              />
+              >
+              <option value="" disabled selected>Daily Lunch</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+              </select>
             </div>
             <div className="w-full p-1.5 sm:w-1/2">
-              <input
+              <select
                 className="h-10 w-full rounded-md border-gray-300 bg-slate-200 px-3 py-2 text-sm placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1"
                 type="text"
                 placeholder="Daily Snacks"
                 name="dailySnacks"
                 value={formData.snacks}
                 onChange={handleInputChange}
-              />
+              >
+              <option value="" disabled selected>Daily Snacks</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+              </select>
             </div>
             <div className="w-full p-1.5 sm:w-1/2">
-              <input
+              <select
                 className="h-10 w-full rounded-md border-gray-300 bg-slate-200 px-3 py-2 text-sm placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1"
                 type="text"
                 placeholder="Daily Dinner"
                 name="dailyDinner"
                 value={formData.dinner}
-                onChange={handleInputChange}
-              />
+                onChange={handleInputChange}>
+              <option value="" disabled selected>Daily Dinner</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+              </select>
             </div>
 
             <div className="w-full p-1.5 sm:w-1/2">

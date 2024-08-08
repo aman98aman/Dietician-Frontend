@@ -12,13 +12,13 @@ const testimonail = [
     name:"Anu",
     profession:"Team Lead",
     rating:"4/5",
-    comment:"I've tried countless diets and workout plans before, but nothing compares to the results I've achieved with their guidance. Their approach is practical, effective, and sustainable."
+    comment:"I've tried countless diets and workout plans before, but nothing compares to the results I've achieved with their guidance. Their approach is practical, effective, and sustainable if followed diet consistently."
   },
   {
     name:"Ankit Kumar",
     profession:"Sales",
-    rating:"5/5",
-    comment:"I was skeptical at first, but after just a few weeks, I could see and feel the difference. Their knowledge and support have been invaluable in helping me reach my fitness goals"
+    rating:"4/5",
+    comment:"I was skeptical at first, but after just a few weeks, I could see and feel the difference. Their knowledge and support have been invaluable in helping me reach my fitness goals, thank you!"
   },
   {
     name:"Aman Kapoor",

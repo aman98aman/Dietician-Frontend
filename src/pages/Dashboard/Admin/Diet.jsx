@@ -1,20 +1,40 @@
-import React from "react";
-import AdminDashboardNav from "./AdminDashboardNav";
-import Cards from "./Cards";
-import LineChartCard from "./LineChartCard";
-import FaqAccordion from "./FaqAccordion";
-import Sidebar from "./Sidebar";
-import DashBoard2 from "./Dashboard2";
-// import UserChart from './UserChart'
+import React, { useEffect, useState } from 'react';
+import './Diet.css';
+import Sidebar2 from './Sidebar2';
+import MainContent from './MainContent';
+import { Routes, Route } from 'react-router-dom';
+import DietCreate from './DietCreate';
+import DietEdit from './DietEdit.jsx';
+import api from "../../../components/AxiosInterceptor.js"
+import { initialData } from './Dashboard2.jsx';
 
-const Diet = () => (
-  <div className="flex flex-row">
-    {/* <Sidebar /> */}
-    
-    <div className="flex flex-col">
-    <DashBoard2 />
+function Diet() {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(()=>{
+    api.get("/diet/getMeal").then((res)=>{
+      setCategories(res?.data ?? [])
+    })
+  },[])
+  const handleCreate = (newCategory) => {
+    let payload={...newCategory,categories: initialData};
+    setCategories([...categories, payload]);
+    api.post("/diet/addMeal",payload).then((res)=>{
+      console.log(res)
+    })
+  };
+
+  return (
+    <div className="Diet">
+      <Sidebar2 />
+      <Routes>
+        <Route path="/" element={<MainContent categories={categories} setCategories={setCategories} />} />
+        <Route path="create-diet" element={<DietCreate onCreate={handleCreate} />} />
+        <Route path="edit-diet/:index" element={<DietEdit categories={categories} setCategories={setCategories} />} />
+      </Routes>
     </div>
-  </div>
-);
+  );
+}
 
 export default Diet;
+

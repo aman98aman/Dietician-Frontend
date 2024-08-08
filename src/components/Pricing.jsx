@@ -1,9 +1,17 @@
 import { Fade } from "react-awesome-reveal";
-
+import WeightlossDietPlan from './../assets/WeightlossDietPlan.svg'
 function Pricing() {
   return (
     <section className="dark:bg-slate-900">
-      <p className="text-center text-2xl font-light"></p>
+      <div style={{ width: '100%' }}>
+      <img
+      src={WeightlossDietPlan}
+      alt="talk to expert"
+      style={{ width: '100%', height: 'auto',}}
+      />
+
+    </div>
+      <p className="text-center text-2xl font-light" id="planss"></p>
       <h2 className="pt-4 text-center text-5xl font-bold dark:text-slate-50">
         Plan & Pricing.
       </h2>

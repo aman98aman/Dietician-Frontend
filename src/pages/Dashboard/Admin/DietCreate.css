@@ -1,0 +1,34 @@
+.diet-create {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.diet-create h2 {
+  margin-bottom: 20px;
+}
+
+.diet-create form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.diet-create input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.diet-create .btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.diet-create .btn:hover {
+  background-color: #0056b3;
+}

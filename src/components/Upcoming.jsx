@@ -9,12 +9,9 @@ const Upcoming = () => {
     <div className="bg-gray-100 dark:bg-slate-900">
       <div className="mx-20 flex flex-wrap items-center justify-between gap-4 bg-none p-10">
         <div className="flex flex-col">
-          <h1 className="text-md font-bold text-red-500">Our Fitness Trainings</h1>
-          <h2 className="text-4xl text-gray-600 dark:text-gray-200">Upcoming Classes</h2>
+          <h1 className="text-md font-bold text-red-500">WHY DIET IS IMPORTANT</h1>
+          <h2 className="text-4xl text-gray-600 dark:text-gray-200">HOW A HEALTHY DIET CAN IMPROVE YOUR HEALTH</h2>
         </div>
-        <button className="rounded bg-black px-4 py-2 font-bold text-white hover:bg-gray-800">
-          More
-        </button>
       </div>
       <div className="flex flex-wrap justify-center bg-none px-3">
         <div className="flex max-w-7xl flex-wrap justify-center">
@@ -24,12 +21,10 @@ const Upcoming = () => {
               <div className="rounded-lg bg-white/60 shadow-lg dark:bg-slate-950">
                 <img src={Photo1} alt="Card" className="h-60 w-full rounded-t-lg object-cover" />
                 <div className="p-4">
-                  <h3 className="mb-2 text-xl font-bold dark:text-white">Yoga</h3>
-                  <p className="mb-4 text-gray-700 dark:text-slate-300">
-                    Yoga embodies a harmony of mind, body, and spirit, fostering inner peace and strength.
-                    Its ancient wisdom guides us to breathe deeply, stretch gracefully, and find balance within.
-                  </p>
-                  <a href="#" className="text-blue-500">Read More</a>
+                  <h3 className="mb-2 text-xl font-bold dark:text-white">Diabetes</h3>
+                  <p className="mb-4 text-gray-700 dark:text-slate-300 justify-between">
+                  Manage diabetes with a diet low in glycemic index foods, rich in fiber, and balanced in macronutrients. Include whole grains, vegetables, and fruits. Stay hydrated, control portions, and avoid sugary foods. Combine this with regular exercise for optimal health.                  </p>
+                  <a href="" className="text-blue-500">Read More</a>
                 </div>
               </div>
             </div>
@@ -37,12 +32,9 @@ const Upcoming = () => {
               <div className="rounded-lg bg-white/60 shadow-lg dark:bg-slate-950">
                 <img src={Photo2} alt="Card" className="h-60 w-full rounded-t-lg object-cover" />
                 <div className="p-4">
-                  <h3 className="mb-2 text-xl font-bold dark:text-white">Cardio</h3>
-                  <p className="mb-4 text-gray-700 dark:text-slate-300">
-                    Cardio exercises ignite our vitality, pumping energy into every beat of our hearts.
-                    With each stride and rhythm, we push our limits, unlocking our endurance and stamina.
-                  </p>
-                  <a href="#" className="text-blue-500">Read More</a>
+                  <h3 className="mb-2 text-xl font-bold dark:text-white">PCOS</h3>
+                  <p className="mb-4 text-gray-700 dark:text-slate-300 justify-between">
+                  For PCOS, eat whole foods like fruits, vegetables, lean proteins, and whole grains. Reduce processed foods and sugars. Anti-inflammatory foods like fatty fish, nuts, and leafy greens help. Balanced meals with essential nutrients support hormonal health</p>                  <a href="#" className="text-blue-500">Read More</a>
                 </div>
               </div>
             </div>
@@ -50,11 +42,9 @@ const Upcoming = () => {
               <div className="rounded-lg bg-white/60 shadow-lg dark:bg-slate-950">
                 <img src={Photo3} alt="Card" className="h-60 w-full rounded-t-lg object-cover" />
                 <div className="p-4">
-                  <h3 className="mb-2 text-xl font-bold dark:text-white">Gym</h3>
-                  <p className="mb-4 text-gray-700 dark:text-slate-300">
-                    In the gym, we sculpt our bodies into temples of strength, dedication, and resilience.
-                    With every lift and press, we forge muscles and determination, surpassing our limits.
-                  </p>
+                  <h3 className="mb-2 text-xl font-bold dark:text-white">Obesity</h3>
+                  <p className="mb-4 text-gray-700 dark:text-slate-300 justify-between">
+                  Manage weight with a diet of fruits, vegetables, lean proteins, and whole grains, while limiting sugary drinks and high-calorie snacks. Regular exercise, mindful eating, and portion control enhance efforts. Nutrient-dense foods support weight loss and health.                  </p>
                   <a href="#" className="text-blue-500">Read More</a>
                 </div>
               </div>
@@ -67,10 +57,9 @@ const Upcoming = () => {
               <div className="rounded-lg bg-white/60 shadow-lg dark:bg-slate-950">
                 <img src={Photo1} alt="Card" className="h-60 w-full rounded-t-lg object-cover" />
                 <div className="p-4">
-                  <h3 className="mb-2 text-xl font-bold dark:text-white">Yoga</h3>
+                  <h3 className="mb-2 text-xl font-bold dark:text-white">Thyroid</h3>
                   <p className="mb-4 text-gray-700 dark:text-slate-300">
-                    Yoga embodies a harmony of mind, body, and spirit, fostering inner peace and strength.
-                    Its ancient wisdom guides us to breathe deeply, stretch gracefully, and find balance within.
+                  Support thyroid function with iodine-rich foods, selenium, and zinc. Avoid goitrogens in certain raw cruciferous vegetables and soy. Balanced nutrients aid thyroid hormone production and metabolism, helping manage symptoms and promote health.
                   </p>
                   <a href="#" className="text-blue-500">Read More</a>
                 </div>
@@ -80,10 +69,9 @@ const Upcoming = () => {
               <div className="rounded-lg bg-white/60 shadow-lg dark:bg-slate-950">
                 <img src={Photo2} alt="Card" className="h-60 w-full rounded-t-lg object-cover" />
                 <div className="p-4">
-                  <h3 className="mb-2 text-xl font-bold dark:text-white">Cardio</h3>
+                  <h3 className="mb-2 text-xl font-bold dark:text-white">Keto Diet</h3>
                   <p className="mb-4 text-gray-700 dark:text-slate-300">
-                    Cardio exercises ignite our vitality, pumping energy into every beat of our hearts.
-                    With each stride and rhythm, we push our limits, unlocking our endurance and stamina.
+                  The keto diet reduces carbs and increases fats, promoting ketosis to burn fat for fuel. It aids weight loss, blood sugar control, and mental clarity. Include healthy fats and moderate protein for a balanced keto lifestyle.
                   </p>
                   <a href="#" className="text-blue-500">Read More</a>
                 </div>
