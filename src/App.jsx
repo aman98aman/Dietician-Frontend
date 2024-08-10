@@ -20,6 +20,7 @@ import Diet from "./pages/Dashboard/Admin/Diet.jsx";
 import Dashboard2 from "./pages/Dashboard/Admin/Dashboard2.jsx";
 import DietCreate from "./pages/Dashboard/Admin/DietCreate.jsx";
 import DietEdit from "./pages/Dashboard/Admin/DietEdit.jsx";
+import Recommend from "./pages/Dashboard/User/Recommend.jsx";
 
 const App = () => {
   return (
@@ -32,9 +33,11 @@ const App = () => {
         <Route path="/UserDetailForm" element={<UserDetailForm />} />
         <Route path="/super" element={<AdminPanel />} />
         <Route path="/super/ut" element={<UserTicket />} />
+        <Route path="/users/details/recommend/:id" element={<Recommend />} />        
         <Route path="/dashboard/admin" element={<Protectedroutes><Dashboard /></Protectedroutes>} >
           <Route index element={<Protectedroutes><AdminHome /></Protectedroutes>} />
           <Route path="users" element={<Protectedroutes><Users /></Protectedroutes>} />
+          <Route path="users/details/recommend/:id" element={<Protectedroutes><Recommend /></Protectedroutes>} />
           <Route path="users/:id" element={<Protectedroutes><SingleUser /></Protectedroutes>} />
           <Route path="requests" element={<Protectedroutes><Requests /></Protectedroutes>} />
         </Route>

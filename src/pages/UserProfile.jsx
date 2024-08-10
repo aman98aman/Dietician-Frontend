@@ -5,7 +5,7 @@ import { jwtDecode } from "jwt-decode";
 import { useEffect } from "react";
 //import { useEffect } from "react";
 import { useState } from "react";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 
 const UserProfile = () => {
 
@@ -68,12 +68,12 @@ const UserProfile = () => {
     const jsonData = await response.json();
     console.log("jsonData", jsonData);
 
-    if (jsonData.success) {
-      getProfileData();
-      toast.message("Successfully uploaded image");
-    } else {
-      toast.error("got some problem", e);
-    }
+    // if (jsonData.success) {
+    //   getProfileData();
+    //   toast.message("Successfully uploaded image");
+    // } else {
+    //   toast.error("got some problem", e);
+    // }
   }
 
   return (

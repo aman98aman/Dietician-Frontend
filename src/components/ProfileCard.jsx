@@ -74,7 +74,7 @@ const ProfileCard = () => {
             <div className="flex xl:gap-16 md:gap-8">
               {/* Twitterr */}
               <a
-                href="#"
+                href="https://www.instagram.com/arshsandhu713?igsh=MWZnZ2V5cDE5c2s4Mw%3D%3D&utm_source=qr"
                 className="mr-2 rounded-full bg-gray-200 p-2 text-gray-600 hover:text-gray-800 dark:bg-slate-950 dark:text-slate-300 dark:hover:text-slate-500"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -95,7 +95,7 @@ const ProfileCard = () => {
               </a>
               {/* Linkedin */}
               <a
-                href="#"
+                href="https://www.instagram.com/arshsandhu713?igsh=MWZnZ2V5cDE5c2s4Mw%3D%3D&utm_source=qr"
                 className="mr-2 rounded-full bg-gray-200 p-2 text-gray-600 hover:text-gray-800 dark:bg-slate-950 dark:text-slate-300 dark:hover:text-slate-500"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -117,7 +117,7 @@ const ProfileCard = () => {
               </a>
               {/* GitHub */}
               <a
-                href="#"
+                href="https://www.instagram.com/arshsandhu713?igsh=MWZnZ2V5cDE5c2s4Mw%3D%3D&utm_source=qr"
                 className="rounded-full bg-gray-200 p-2 text-gray-600 hover:text-gray-800 dark:bg-slate-950 dark:text-slate-300 dark:hover:text-slate-500"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -129,11 +129,12 @@ const ProfileCard = () => {
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path
+                 <path
                     fillRule="evenodd"
-                    d="M12 2c-2.4 0-4.7.9-6.5 2.4a10.5 10.5 0 0 0-2 13.1A10 10 0 0 0 8.7 22c.5 0 .7-.2.7-.5v-2c-2.8.7-3.4-1.1-3.4-1.1-.1-.6-.5-1.2-1-1.5-1-.7 0-.7 0-.7a2 2 0 0 1 1.5 1.1 2.2 2.2 0 0 0 1.3 1 2 2 0 0 0 1.6-.1c0-.6.3-1 .7-1.4-2.2-.3-4.6-1.2-4.6-5 0-1.1.4-2 1-2.8a4 4 0 0 1 .2-2.7s.8-.3 2.7 1c1.6-.5 3.4-.5 5 0 2-1.3 2.8-1 2.8-1 .3.8.4 1.8 0 2.7a4 4 0 0 1 1 2.7c0 4-2.3 4.8-4.5 5a2.5 2.5 0 0 1 .7 2v2.8c0 .3.2.6.7.5a10 10 0 0 0 5.4-4.4 10.5 10.5 0 0 0-2.1-13.2A9.8 9.8 0 0 0 12 2Z"
+                    d="M12 2.2c2.7 0 3.1 0 4.2.1 1 .1 1.7.2 2.4.4.6.2 1.1.5 1.6.9.4.4.7.9.9 1.6.2.7.3 1.4.4 2.4.1 1.1.1 1.4.1 4.2s0 3.1-.1 4.2c-.1 1-.2 1.7-.4 2.4-.2.6-.5 1.1-.9 1.6-.4.4-.9.7-1.6.9-.7.2-1.4.3-2.4.4-1.1.1-1.4.1-4.2.1s-3.1 0-4.2-.1c-1-.1-1.7-.2-2.4-.4-.6-.2-1.1-.5-1.6-.9-.4-.4-.7-.9-.9-1.6-.2-.7-.3-1.4-.4-2.4-.1-1.1-.1-1.4-.1-4.2s0-3.1.1-4.2c.1-1 .2-1.7.4-2.4.2-.6.5-1.1.9-1.6.4-.4.9-.7 1.6-.9.7-.2 1.4-.3 2.4-.4 1.1-.1 1.4-.1 4.2-.1m0-2.2c-2.8 0-3.2 0-4.3.1-1.1.1-1.8.2-2.6.5a5.8 5.8 0 0 0-2.1 1.2A5.8 5.8 0 0 0 2.8 4c-.3.8-.4 1.5-.5 2.6-.1 1.1-.1 1.5-.1 4.3s0 3.2.1 4.3c.1 1.1.2 1.8.5 2.6.3.8.7 1.4 1.2 2.1a5.8 5.8 0 0 0 2.1 1.2c.8.3 1.5.4 2.6.5 1.1.1 1.5.1 4.3.1s3.2 0 4.3-.1c1.1-.1 1.8-.2 2.6-.5.8-.3 1.4-.7 2.1-1.2a5.8 5.8 0 0 0 1.2-2.1c.3-.8.4-1.5.5-2.6.1-1.1.1-1.5.1-4.3s0-3.2-.1-4.3c-.1-1.1-.2-1.8-.5-2.6a5.8 5.8 0 0 0-1.2-2.1A5.8 5.8 0 0 0 19.8 2c-.8-.3-1.5-.4-2.6-.5-1.1-.1-1.5-.1-4.3-.1zM12 6.8a5.2 5.2 0 1 0 0 10.4 5.2 5.2 0 0 0 0-10.4zm0 8.6a3.4 3.4 0 1 1 0-6.8 3.4 3.4 0 0 1 0 6.8zm6.4-10a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"
                     clipRule="evenodd"
-                  />
+                 />
+
                 </svg>
               </a>
             </div>

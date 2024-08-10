@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
 import { decodeJwt } from '../pages/middelwares';
 import React from 'react';
+import { toast } from 'react-toastify';
 
 
 const RaiseRequest = () => {
@@ -13,12 +14,12 @@ const RaiseRequest = () => {
     console.log("decoded is in Raise request", decoded)
 
     const handleSubmit = async (e) => {
-        try{
         e.preventDefault();
+        const userData=decoded?.userData;
         let reqBody = {
-            name: decoded.name,
-            email:decoded.email,
-            phoneNumber: decoded.phoneNumber,
+            name: userData.name,
+            email:userData.email,
+            phoneNumber: userData.phoneNumber,
             description: inputRef.current.value
         }
         const res = await fetch("http://localhost:3333/request/postRequest", {
@@ -30,15 +31,9 @@ const RaiseRequest = () => {
         })
         const resJson = await res.json();
         if(resJson.success){
-            navigate("/");
             toast.message("Succcesfully sent")
         }else{
-            navigate("/");
             toast.message("Something went wrong") 
-        }
-    
-    }catch(e){
-            toast.error("OOps! got somwthing wrong");
         }
     }
 

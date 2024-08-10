@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { LiaWhatsapp } from "react-icons/lia";
+import { decodeJwt } from "../../middelwares";
+import { useSelector } from "react-redux";
 
 
 const Requests = () => {
   const [allRequests, setAllRequests] = useState([]);
+  const token = localStorage.getItem("dietToken");
+  const decoded = token ? decodeJwt(token) : null;
+  const allUser = useSelector((state) => state.allUser.userArr || []);
+
   console.log("all requestinside requests.jsx", allRequests)
 
   async function handleDelete(comingIndex, id) {
@@ -32,13 +38,26 @@ const Requests = () => {
   }
 
   function openWhatsApp(comingIndex){
+    console.log(allRequests)
     //const request = allRequests.filter( (index)=> index != comingIndex);
-    const url = `https://wa.me/${6387651169}`;
+    const url = `https://wa.me/${allRequests?.[comingIndex]?.phoneNumber}`;
     console.log('url is',url)
     // const url = `https://web.whatsapp.com/send?phone=6387651169`
     window.open(url, '_blank');
   }
 
+  function fetchdata(){
+    const data = fetch("http://localhost:3333/users/allUser").then((data)=>{
+      const resData = data.json();
+      dispatch(setUserDetails(resData.data))
+    })
+  }
+
+  useEffect(()=>{
+    if(!allUser){
+      fetchdata()
+    }    
+  },[])
   useEffect(() => {
     async function fetchData() {
       try {

@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/giphy.gif";
 import { decodeJwt } from "../pages/middelwares";
 import { Link } from "react-router-dom";
+import api from "./AxiosInterceptor";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [recommendation,setRecommendation] = useState();
   const token = localStorage.getItem("dietToken");
   const navigate = useNavigate();
   console.log("token in navbar", token);
@@ -20,6 +22,15 @@ const Navbar = () => {
     navigate("/");
   }
 
+  useEffect(()=>{
+    if(decoded){
+      const userData = decoded.userData
+      api.post("/users/getUserDiet",{email:userData.email ?? ""}).then((res)=>{
+        const diet = res.data?.[0];
+        setRecommendation(diet)
+      })  
+    }
+  },[])
 
 
   const [selectedOption, setSelectedOption] = useState(null);
@@ -101,7 +112,7 @@ const Navbar = () => {
               <li className="py-2 lg:py-0 ">
                 <a
                   className="py-2 px-3 hover:border-b-4 hover:rounded-md hover:border-slate-300-400 hover:bg-red-600 dark:hover:bg-gray-300 dark:hover:text-slate-950"
-                  href="https://wa.me/1234567890"
+                  href="https://wa.me/9814256639"
                   target="blank"
                 >
                   Contact
@@ -146,7 +157,8 @@ const Navbar = () => {
                           <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                             <Link
                               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
-                              to={(decoded.userData.isUser) ? "/fitness" : "/dashboard/admin"}
+                              to={(decoded.userData.isUser) ? `/users/details/recommend/${recommendation?._id}` : "/dashboard/admin"}
+                              state={decoded.userData}
                             >
                               {(decoded.userData.isUser) ? "Diets" : "AdminPanel"}
                             </Link>

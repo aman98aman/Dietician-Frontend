@@ -110,7 +110,7 @@ function Links() {
 function Sidebar2() {
 
   return (
-    <nav style={{width: "17%"}}
+    <nav style={{width: "17%", position: "relative"}}
       className={
         "text-black shadow-lg lg:block lg:h-screen lg:sticky lg:left-0 lg:top-0 md:flex md:w-screen md:fixed lg:w-full"
         // "hidden min-h-svh max-w-80 rounded-3xl bg-white shadow-lg lg:sticky lg:left-0 lg:top-0 lg:block"

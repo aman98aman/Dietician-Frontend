@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { toast, ToastContainer } from "react-toastify";
 import Meal from './Meal';
@@ -48,6 +48,7 @@ const SingleUser = () => {
     const [showOptions, setShowOptions] = useState(false);
     const [showOptionData, setShowOptionData] = useState([])
     const [loadingImages, setLoadingImages] = useState(false);
+    const navigate = useNavigate();
 
 
     console.log("new progressImage is", progressImage);
@@ -176,21 +177,8 @@ const SingleUser = () => {
 
 
     const handleSelectChange = (e) => {
-        try {
-            const selectedMeal = totalMeals.filter((meal) => meal.categoryName === e.target.value)
-            setrecommendedMeal(selectedMeal[0]);
-            let options = Object.keys(selectedMeal[0]);
-            let optionsData = options.filter((value) => {
-                if (value == "_id" || value == "categoryName" || value == "__v") {
-                    return false;
-                }
-                return true;
-            })
-            setShowOptions(true)
-            setShowOptionData(optionsData);
-        } catch (error) {
-            toast.error("Got some error", error);
-        }
+            const selectedMeal = totalMeals.filter((meal) => meal?.name === e.target.value)
+            navigate(`/dashboard/admin/Users/details/recommend/${selectedMeal?.[0]?._id}`,{ state:{userData : location.state.userData} })
 
     };
 
@@ -444,71 +432,6 @@ const SingleUser = () => {
                     ))}
                 </div>
 
-
-
-
-
-                {selectedButton && Object.keys(recommendedMeal[selectedButton]).map((value1) => (
-                    <div key={value1}>
-                        <h1 className="mb-4 text-lg text-emerald-600 dark:text-slate-300 text-center">
-                            {value1.toUpperCase()}
-                        </h1>
-                        {Object.keys(recommendedMeal[selectedButton][value1]).map((value2) => {
-                            if (value2 === "instructions") {
-                                return (
-                                    <div key={value2}>
-                                        <h2 className="mb-4 text-lg text-emerald-600 dark:text-slate-300">
-                                            {value2.toUpperCase()}
-                                        </h2>
-                                        <ul>
-                                            {recommendedMeal[selectedButton][value1][value2].map((value3, index) => (
-                                                <li key={index}>{value3}</li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                );
-                            } else {
-                                return (
-                                    <div key={value2}>
-                                        <h2 className="mb-4 text-lg text-emerald-600 dark:text-slate-300">
-                                            {value2.toUpperCase()}
-                                        </h2>
-                                        <button
-                                            className={`bg-green-600 text-white rounded p-0.5 px-2`}
-
-                                            onClick={() => addMeal(selectedButton, value1, value2)}
-                                        >
-                                            Add More
-                                        </button>
-                                        {recommendedMeal[selectedButton][value1][value2].map((value3, index) => {
-                                            return <Meal
-                                                key={index}
-                                                ingredients={value3.ingredients}
-                                                name={value3.name}
-                                                index={index}
-                                                total={value3.total}
-                                                note={value3.note}
-                                                addIngredients={addIngredients}
-                                                firstDataObject={selectedButton}
-                                                secondDataObject={value1}
-                                                thirdDataObject={value2}
-                                                fourthIndexNumber={index}
-                                                updateIngredientsData={updateIngredientsData}
-                                                deleteIngredientData={deleteIngredientData}
-                                                updateMealName={updateMealName}
-                                                deleteMeals={deleteMeals}
-                                            />
-                                        })}
-
-                                    </div>
-                                );
-                            }
-                        })}
-                    </div>
-                ))}
-
-
-
                 <div className="sm:w-64">
                     <label htmlFor="meal" className="block text-sm font-medium text-gray-700">
                         Add meal
@@ -522,7 +445,7 @@ const SingleUser = () => {
                     >
                         <option value="" default>Select the diet from below</option>
                         {
-                            totalMeals.map((meal) => <option value={meal.categoryName}>{meal.categoryName}</option>)
+                            totalMeals.map((meal) => <option value={meal?.name ?? ""}>{meal.name ?? ""}</option>)
                         }
                     </select>
 

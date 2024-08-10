@@ -76,10 +76,10 @@ const Footer = () => {
             <ul className="mt-2 space-y-2">
               <li>
                 <a
-                  href="mailto:support@domainname.com"
+                  href="mailto:info@arshsandhufitness.com"
                   className="text-gray-400 transition duration-300 ease-in-out hover:text-white"
                 >
-                  Support@domainname.com
+                  Support@arshsandhufitness.com
                 </a>
               </li>
               <li>
@@ -106,13 +106,13 @@ const Footer = () => {
             <h2 className="text-2xl font-bold">CONTACT US</h2>
             <p className="mt-2 text-gray-400">
               <a
-                href="tel:+911234567890"
+                href="tel:+919689400002"
                 className="block transition duration-300 ease-in-out hover:text-white"
               >
-                +91-1234567890
+                +91-9689400002
               </a>
               <a
-                href="mailto:info@domainname.com"
+                href="mailto:info@arshsandhufitness.com"
                 className="block transition duration-300 ease-in-out hover:text-white"
               >
                 info@arshsandhufitness.com
@@ -121,19 +121,19 @@ const Footer = () => {
             <div className="flex space-x-4 mt-4">
               {/* Social Media Icons */}
               <a
-                href="#"
+                href="https://www.instagram.com/arshsandhu713?igsh=MWZnZ2V5cDE5c2s4Mw%3D%3D&utm_source=qr"
                 className="bg-red-800 p-2 rounded-full text-white transition duration-300 ease-in-out hover:bg-red-600"
               >
                 <FaFacebookF />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/arshsandhu713?igsh=MWZnZ2V5cDE5c2s4Mw%3D%3D&utm_source=qr"
                 className="bg-red-800 p-2 rounded-full text-white transition duration-300 ease-in-out hover:bg-red-600"
               >
                 <FaInstagram />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/arshsandhu713?igsh=MWZnZ2V5cDE5c2s4Mw%3D%3D&utm_source=qr"
                 className="bg-red-800 p-2 rounded-full text-white transition duration-300 ease-in-out hover:bg-red-600"
               >
                 <FaYoutube />
