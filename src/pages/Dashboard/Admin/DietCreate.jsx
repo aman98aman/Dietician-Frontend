@@ -14,7 +14,7 @@ const DietCreate = ({ onCreate }) => {
   };
 
   return (
-    <div className="diet-create">
+    <div style={{zIndex:1111}} className="diet-create">
       {/* <Sidebar2 /> */}
       <div className="create-form">
         <h2>Create New Diet Category</h2>

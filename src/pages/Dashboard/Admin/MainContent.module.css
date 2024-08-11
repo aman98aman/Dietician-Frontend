@@ -2,6 +2,7 @@
   padding: 20px;
   font-family: Arial, sans-serif;
   flex: 1;
+  z-index: 1111;
 }
 
 .header {
