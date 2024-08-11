@@ -21,7 +21,7 @@ const UserProgress = () => {
   async function getBMI() {
     try {
       const response = await axios.post("http://localhost:3333/users/getProgressWeight", {
-        email: "ananddua5@gmail.com"
+        email: decoded?.userData?.email
       });
 
       const data = await response.data;

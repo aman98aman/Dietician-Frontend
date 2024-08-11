@@ -41,7 +41,6 @@ const Requests = () => {
     console.log(allRequests)
     //const request = allRequests.filter( (index)=> index != comingIndex);
     const url = `https://wa.me/${allRequests?.[comingIndex]?.phoneNumber}`;
-    console.log('url is',url)
     // const url = `https://web.whatsapp.com/send?phone=6387651169`
     window.open(url, '_blank');
   }
