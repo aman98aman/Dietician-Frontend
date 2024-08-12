@@ -47,6 +47,7 @@ const Requests = () => {
 
   function fetchdata(){
     const data = fetch("http://localhost:3333/users/allUser").then((data)=>{
+
       const resData = data.json();
       dispatch(setUserDetails(resData.data))
     })
@@ -91,7 +92,7 @@ const Requests = () => {
                   <i className="ai ai-carrot-fill absolute right-4 top-4 text-right text-xl text-orange-400"></i>
                 </div>
                 <div className="my-4 mb-6">
-                  <h4 className="font-serif text-xl">{value.name}</h4>
+                  <h4 className="text-[18px] font-serif text-xl">{value.email}</h4>
                   <p className="text-gray-700">{value.description}</p>
                 </div>
               </div>

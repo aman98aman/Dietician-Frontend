@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { decodeJwt } from '../pages/middelwares';
 import React from 'react';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 const RaiseRequest = () => {
-    
+    const [disableBtn, setDisableBtn] = useState(false)
     const navigate = useNavigate();
     const inputRef = useRef();
     const token = localStorage.getItem("dietToken");
@@ -14,32 +14,36 @@ const RaiseRequest = () => {
     console.log("decoded is in Raise request", decoded)
 
     const handleSubmit = async (e) => {
+        setDisableBtn(true)
         e.preventDefault();
-        const userData=decoded?.userData;
+        const userData = decoded?.userData;
         let reqBody = {
             name: userData.name,
-            email:userData.email,
+            email: userData.email,
             phoneNumber: userData.phoneNumber,
             description: inputRef.current.value
         }
         const res = await fetch("http://localhost:3333/request/postRequest", {
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json"
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
             },
-            body:JSON.stringify(reqBody)
+            body: JSON.stringify(reqBody)
         })
         const resJson = await res.json();
-        if(resJson.success){
-            toast.message("Succcesfully sent")
-        }else{
-            toast.message("Something went wrong") 
+        if (resJson.success) {
+            toast("Succcesfully sent")
+            setDisableBtn(false)
+        } else {
+            toast("Something went wrong")
+            setDisableBtn(false)
         }
     }
 
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100">
+            <ToastContainer />
             <form className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
                 <h2 className="text-2xl font-bold mb-4 text-center">Submit Your Request</h2>
 
@@ -58,15 +62,15 @@ const RaiseRequest = () => {
 
                 <div className="text-center">
                     <button
-                        
-                        className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        disabled={disableBtn}
+                        className={`${disableBtn ? ' bg-gray-200' : ""} w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500`}
                         onClick={handleSubmit}
                     >
-                        Submit
+                        {disableBtn ? "Sending..." : "Submit"}
                     </button>
                 </div>
-            </form>
-        </div>
+            </form >
+        </div >
     );
 }
 

@@ -7,10 +7,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useLocation } from 'react-router-dom';
 
-function Button({ onClick, text }) {
+function Button({ onClick, text, disabled }) {
 
   return (
     <button
+      disabled={disabled}
       onClick={onClick}
       className="inline-flex w-full items-center justify-center rounded-md bg-indigo-800 px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-gradient-to-r hover:from-purple-800 hover:to-indigo-800"
     >
@@ -23,6 +24,7 @@ function UserDetailForm() {
   const navigate = useNavigate();
   let location = useLocation();
   console.log("location value  in the userDetailForm is", location.state.key);
+  const [btnDisable, setBtnDisable] = useState(false)
 
   const handleBackButton = () => {
     toast.warn(
@@ -100,6 +102,7 @@ function UserDetailForm() {
     const completeUserData = {...location.state.key, ...formData}
     console.log("complete user data is", completeUserData);
 
+    setBtnDisable(true)
     const sendUserData = await fetch("http://localhost:3333/users/addUser",{
         method:"POST",
         headers:{
@@ -111,9 +114,11 @@ function UserDetailForm() {
     const sendUserDataJson = await sendUserData.json();
 
     if(sendUserDataJson.success){
+      setBtnDisable(false)
       alert("user is saved to d successfully....!! Pls Login");
       navigate('/auth/login');
     }else{
+      setBtnDisable(false)
       alert("Something went wrong...!! Try again");
       navigate('/auth/signup');
     }
@@ -168,8 +173,9 @@ function UserDetailForm() {
           <div>
             <Step4 handleChange={handleChange} />
             <div className="flex gap-x-4">
-              <Button onClick={previousPage} text="Back" />
+              <Button onClick={previousPage} text="Back" disabled={btnDisable} />
               <button
+                disabled={btnDisable}
                 onClick={handleSubmit}
                 className="inline-flex w-full items-center justify-center rounded-md bg-indigo-800 px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-gradient-to-r hover:from-purple-800 hover:to-indigo-800"
               >

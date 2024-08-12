@@ -26,14 +26,16 @@ const UserProgress = () => {
 
       const data = await response.data;
       console.log("BMIIIII response Data", data);
-      setBmiData(data);      
+      setBmiData(data);
     } catch (e) {
-      console.log(e.message);
+      console.log('error', e.message);
     }
   }
 
   useEffect(() => {
     getBMI();
+    console.log('api called');
+
   }, []);
 
   async function handleUpload(e) {
@@ -86,7 +88,7 @@ const UserProgress = () => {
           </div>
 
 
-{/* Graph */}
+          {/* Graph */}
           <div className="py-8 w-full rounded bg-gray-300 text-center shadow md:w-2/4">
             <h2 className=" font-serif text-2xl uppercase text-black-500">
               Weight
