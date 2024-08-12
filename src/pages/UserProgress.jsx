@@ -8,6 +8,7 @@ import BMI from './BMI.jsx';
 const UserProgress = () => {
   const [bmiData, setBmiData] = useState([]);
   const [weight, setWeight] = useState(0);
+  const [BMIData, setBMIData] = useState(null)
 
   const token = localStorage.getItem("dietToken");
   const decoded = token ? decodeJwt(token) : null;
@@ -15,6 +16,16 @@ const UserProgress = () => {
   useEffect(() => {
     if (decoded && decoded.userData) {
       setWeight(decoded.userData.weight);
+    }
+    if (decoded && decoded.userData) {
+      const weight = decoded.userData.weight
+      const height = decoded.userData.height
+      const heightInM = height / 100
+      const calculatedBMI = weight / (heightInM * heightInM)
+      setBMIData(calculatedBMI.toFixed(2))
+      console.log('weight', weight)
+      console.log('height', height)
+      console.log('bmi', BMIData)
     }
   }, [decoded]);
 
@@ -75,8 +86,8 @@ const UserProgress = () => {
             <h2 className="font-serif text-2xl uppercase text-gray-500">
               BMI
             </h2>
-            <span className="text-5xl text-gray-600">19.9</span>
-            <p className="text-3xl text-gray-600">Normal</p>
+            <span className="text-5xl text-gray-600">{BMIData}</span>
+            <p className="text-3xl text-gray-600">{BMIData < 18.5 ? "Underweight" :BMIData >= 18.5 && BMIData <= 24.9 ?"Normal" : "Overweight / Obese"}</p>
             <div className="group relative mx-auto w-32 justify-center">
               <span className="text- rounded font-bold text-gray-600 shadow-sm">
                 ⓘ
