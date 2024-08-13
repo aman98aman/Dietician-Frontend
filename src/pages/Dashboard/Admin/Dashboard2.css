@@ -19,23 +19,28 @@
 
 .diet-container {
   display: flex;
-  align-items: center; /* Ensure input field aligns with the title */
-  gap: 10px; /* Space between title and input */
+  align-items: center;
+  /* Ensure input field aligns with the title */
+  gap: 10px;
+  /* Space between title and input */
 }
 
 .diet-input {
   font-size: 1.5rem;
   padding: 5px;
   border-radius: 5px;
-  border: 1px #ccc; /* Add border to make input visible */
+  border: 1px #ccc;
+  /* Add border to make input visible */
   width: 100%;
-  max-width: 300px; /* Adjust as needed */
+  max-width: 300px;
+  /* Adjust as needed */
 }
 
 .content-buttons {
   display: flex;
   gap: 10px;
-  margin-top: 10px; /* Add margin to separate from the title */
+  margin-top: 10px;
+  /* Add margin to separate from the title */
 }
 
 .content-buttons button {
@@ -45,7 +50,8 @@
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.3s;
-  z-index: 1; /* Ensure buttons are clickable */
+  z-index: 1;
+  /* Ensure buttons are clickable */
 }
 
 .content-buttons button:hover {
@@ -61,7 +67,8 @@
   margin-top: 7px;
   cursor: pointer;
   border-radius: 5px;
-  z-index: 1; /* Ensure save button is clickable */
+  z-index: 1;
+  /* Ensure save button is clickable */
 }
 
 .save-button:hover {
@@ -75,7 +82,8 @@
 .stretching-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px; /* Add margin to avoid overlapping */
+  margin-top: 10px;
+  /* Add margin to avoid overlapping */
 }
 
 .stretching-table th,
@@ -106,10 +114,28 @@ body {
   box-sizing: border-box;
 }
 
-.dashboard-container, .content, .stretching-table-section {
+.dashboard-container,
+.content,
+.stretching-table-section {
   display: block;
 }
 
 .content {
   display: block;
+}
+
+.autocomplete {
+  padding: 0px;
+  margin: 0px;
+  min-width: 100%;
+}
+
+.autocomplete input {
+  padding-left: 0px !important;
+}
+
+.autocomplete .wrapper:nth-child(2) {
+  border: 4px solid orange;
+  max-height: 500px;
+  overflow-x: scroll;
 }
