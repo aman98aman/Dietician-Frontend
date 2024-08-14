@@ -17,37 +17,27 @@ const DietEdit = ({ categories, setCategories }) => {
     navigate('/dashboard/admin/Diet');
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     setCategory(categories?.[index])
-  },[categories])
+  }, [categories])
 
   const onTableEdit = (newChange) => {
-    if(newChange){
-        setCategory({...category,...newChange})
+    if (newChange) {
+      setCategory({ ...category, ...newChange })
     }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     const newCategories = [...categories];
     newCategories[index] = category;
     setCategories(newCategories);
-  },[category])
+  }, [category])
 
   return (
-    <div style={{zIndex:1111}} className="Diet">
+    <div style={{ zIndex: 1111 }} className="Diet">
       {/* <Sidebar2 /> */}
       <Dashboard2 onEdit={onTableEdit} currentCategory={category} />
-      <div className="diet-create">
-        <h2>Edit Diet Category</h2>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            value={category?.name ?? ""}
-            onChange={(e) => {onTableEdit({name:e?.target?.value ?? ""})}}
-            placeholder="Enter new category"
-          />
-        </form>
-      </div>
+
     </div>
   );
 };

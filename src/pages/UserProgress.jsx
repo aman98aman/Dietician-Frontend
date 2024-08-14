@@ -126,14 +126,14 @@ const UserProgress = () => {
               name="weight"
               id="weight"
               placeholder=".kg"
-              value={weight}
+              defaultValue={weight}
               step={0.1}
               onChange={(e) => { setWeight(e.target.value) }}
               className="w-1/4 rounded px-3 py-3 text-center text-xl bg-gray-200 text-gray-600"
             />
-            {/*<button className="mx-auto mt-4 block rounded-full border border-gray-500 p-3 text-xs text-gray-600 hover:bg-gray-500 hover:text-gray-200">
+            <button className="mx-auto mt-4 block rounded-full border border-gray-500 p-3 text-xs text-gray-600 hover:bg-gray-500 hover:text-gray-200">
               Click to Update
-            </button>*/}
+            </button>
           </div>
 
           <div className="py-8 w-full rounded p-10 text-center shadow bg-gray-300 md:w-2/4">

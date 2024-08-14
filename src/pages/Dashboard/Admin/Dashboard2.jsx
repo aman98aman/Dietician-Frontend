@@ -120,7 +120,7 @@ const tabData = {
     { "id": 16, "name": "Plank Hip Twists" },
     { "id": 17, "name": "Side Oblique Crunches" }
   ],
-  'AbsAndCore': [
+  'ABS': [
     { "id": 1, "name": "Laying Leg Pull-In" },
     { "id": 2, "name": "Mountain Climber (Each Side)" },
     { "id": 3, "name": "Leg Raises" },
@@ -211,7 +211,7 @@ function Dashboard2({ onEdit, currentCategory }) {
 
   const renderTable = () => {
     const currentData = sectionData[activeSection] ?? [];
-    console.log('current',currentData)
+    console.log('current', currentData)
     let headers = [];
     let fields = [];
 
@@ -225,12 +225,12 @@ function Dashboard2({ onEdit, currentCategory }) {
         fields = ['srNo', 'name', 'time', 'howToDo'];
         break;
       case 'Workout':
-        headers = ['Sr. No.', 'Name', 'Time', 'How to do'];
-        fields = ['srNo', 'name', 'time', 'howToDo'];
+        headers = ['Workout Type', 'Name', 'Sets', 'Reps', 'Rest', 'How to do'];
+        fields = ['workoutType', 'name', 'sets', 'reps', 'rest', 'howToDo'];
         break;
       case 'ABS':
-        headers = ['Workout Type', 'Exercise', 'Sets', 'Reps', 'Rest', 'How to do'];
-        fields = ['workoutType', 'exercise', 'sets', 'reps', 'rest', 'howToDo'];
+        headers = ['Workout Type', 'Name', 'Sets', 'Reps', 'Rest', 'How to do'];
+        fields = ['workoutType', 'name', 'sets', 'reps', 'rest', 'howToDo'];
         break;
       case 'Meal':
         headers = ['Ingredients', 'Protein', 'Fat', 'Carbs', 'Calories', 'Recipe'];
@@ -268,7 +268,7 @@ function Dashboard2({ onEdit, currentCategory }) {
       // the item selected
 
       console.log("onSelect", value, index, field)
-      
+
       handleTableDataChange(index, field, value.name)
     }
 
@@ -324,7 +324,6 @@ function Dashboard2({ onEdit, currentCategory }) {
                               className='autocomplete'
                               inputSearchString={item?.[field] ?? ""}
                               showClear={false}
-                              autoFocus={false}
                               styling={{
                                 borderRadius: "2px",
                                 boxShadow: "rgba(32, 33, 36, 0.28) 0px 1px 4px 0px 2px",
@@ -341,7 +340,8 @@ function Dashboard2({ onEdit, currentCategory }) {
                           ) : (
                             <input
                               type="text"
-                              value={item?.[field] ?? field === "srNo" ? `${index + 1}` : ""}
+                              defaultValue={item?.[field] ?? field === "srNo" ? `${index + 1}` : ""}
+                              value={field === "srNo" ? `${index + 1}` : null}
                               onChange={(e) => handleTableDataChange(index, field, e.target.value)}
                               style={field === "srNo" ? { maxWidth: "100px" } : {}}
                             />
@@ -365,66 +365,71 @@ function Dashboard2({ onEdit, currentCategory }) {
       </>
     );
   };
+  console.log(activeSection)
 
   return (
     <div className="dashboard-container">
       <div className="content">
         <header className="content-header">
           <div className="diet-container">
-            <h1 className="content-title">DIET /</h1>
-            <input
-              type="text"
-              className="diet-input"
-              value={description}
-              onChange={handleSubtitleChange}
-            />
+            <div className='content-title-container'>
+              <h1 className="content-title">DIET /</h1>
+              <input
+                type="text"
+                className="diet-input"
+                value={description}
+                onChange={handleSubtitleChange}
+              />
+            </div>
+
           </div>
+
           <div className="content-buttons">
             <button
               onClick={() => setActiveSection('Warm up')}
-              className={activeSection === 'Warm up' ? 'active-section' : ''}
+              className={activeSection === 'Warm up' ? 'active-section' : 'tab'}
             >
               Warm up
             </button>
             <button
               onClick={() => setActiveSection('Cardio')}
-              className={activeSection === 'Cardio' ? 'active-section' : ''}
+              className={activeSection === 'Cardio' ? 'active-section' : 'tab'}
             >
               Cardio
             </button>
             <button
               onClick={() => setActiveSection('Workout')}
-              className={activeSection === 'Workout' ? 'active-section' : ''}
+              className={activeSection === 'Workout' ? 'active-section' : 'tab'}
             >
               Workout
             </button>
             <button
               onClick={() => setActiveSection('ABS')}
-              className={activeSection === 'ABS' ? 'active-section' : ''}
+              className={activeSection === 'ABS' ? 'active-section' : 'tab'}
             >
               ABS
             </button>
             <button
               onClick={() => setActiveSection('Meal')}
-              className={activeSection === 'Meal' ? 'active-section' : ''}
+              className={activeSection === 'Meal' ? 'active-section' : 'tab'}
             >
               Meal
             </button>
             <button
               onClick={() => setActiveSection('Stack')}
-              className={activeSection === 'Stack' ? 'active-section' : ''}
+              className={activeSection === 'Stack' ? 'active-section' : 'tab'}
             >
               Stack
             </button>
             <button
               onClick={() => setActiveSection('Grocery List')}
-              className={activeSection === 'Grocery List' ? 'active-section' : ''}
+              className={activeSection === 'Grocery List' ? 'active-section' : 'tab'}
             >
               Grocery List
             </button>
             <button
               onClick={() => setActiveSection('Instruction')}
-              className={activeSection === 'Instruction' ? 'active-section' : ''}
+              className={activeSection === 'Instruction' ? 'active-section' : 'tab'}
             >
               Instruction
             </button>

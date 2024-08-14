@@ -14,3 +14,13 @@ input[type=number] {
   appearance: textfield;
   -moz-appearance: textfield;
 }
+
+.sidebar-container {
+  display: none;
+}
+
+@media screen and (max-width: 786px) {
+  .sidebar-container {
+    display: block;
+  }
+}
