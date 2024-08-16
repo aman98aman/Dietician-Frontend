@@ -5,6 +5,7 @@ import api from "../../../components/AxiosInterceptor.js";
 import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 import { border } from '@chakra-ui/react';
 
+
 const tabData = {
   'Warm up': [
     { "id": 1, "name": "MILD WALKING" },
@@ -233,8 +234,8 @@ function Dashboard2({ onEdit, currentCategory }) {
         fields = ['workoutType', 'name', 'sets', 'reps', 'rest', 'howToDo'];
         break;
       case 'Meal':
-        headers = ['Ingredients', 'Protein', 'Fat', 'Carbs', 'Calories', 'Recipe'];
-        fields = ['ingredients', 'protein', 'fat', 'carbs', 'calories', 'recipe'];
+        headers = ['Ingredients', 'Protein', 'Fat', 'Carbs', 'Calories', 'Recipe', 'Fibre', 'Quantity'];
+        fields = ['ingredients', 'protein', 'fat', 'carbs', 'calories', 'recipe', 'fibre', 'quantity'];
         break;
       case 'Grocery List':
         headers = ['Sr. No.', 'Ingredients', 'Quantity'];
@@ -310,7 +311,6 @@ function Dashboard2({ onEdit, currentCategory }) {
                   <tr key={index}>
                     {fields.map((field, idx) => (
                       < td key={idx} style={field === "name" ? { width: "200%" } : {}} >
-
                         {
                           field === "name" ? (
                             <ReactSearchAutocomplete
@@ -355,9 +355,10 @@ function Dashboard2({ onEdit, currentCategory }) {
                 )
               })}
             </tbody>
+            <img src="/minus.png" style={{ width: "24px", position: "absolute", bottom: -10, left: -10 }} onClick={removeRow} />
+            <img src="/plus.png" style={{ width: "24px", position: "absolute", bottom: -10, right: -10 }} onClick={addNewRow} />
           </table>
-          <img src="/minus.png" style={{ width: "24px", position: "absolute", bottom: -10, left: -10 }} onClick={removeRow} />
-          <img src="/plus.png" style={{ width: "24px", position: "absolute", bottom: -10, right: -10 }} onClick={addNewRow} />
+        
         </section >
         <div className="table-notes mt-5">
           <p>Modify the table content as needed.</p>

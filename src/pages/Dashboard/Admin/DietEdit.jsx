@@ -34,7 +34,7 @@ const DietEdit = ({ categories, setCategories }) => {
   }, [category])
 
   return (
-    <div style={{ zIndex: 1111 }} className="Diet">
+    <div style={{ zIndex: 1111}} className='Diet'>
       {/* <Sidebar2 /> */}
       <Dashboard2 onEdit={onTableEdit} currentCategory={category} />
 

@@ -9,6 +9,7 @@ function Step4({ handleChange }) {
     gymDaysPerWeek: "",
     workoutTime: "",
     supplements: "",
+    plan: "basic"
   });
 
   const handleInputChange = (e) => {
@@ -107,6 +108,35 @@ function Step4({ handleChange }) {
                 onChange={handleInputChange}
               />
             </div>
+            <div className="w-full p-1.5 sm:w-1/2">
+  <label className="inline-flex items-center">
+    <input
+      className="h-4 w-4 text-gray-400 border-gray-300 focus:ring-gray-400 focus:ring-offset-1"
+      type="radio"
+      name="plan"
+      value="basic"
+      checked={formData.plan === "basic"}
+      onChange={handleInputChange}
+    />
+    <span className="ml-2 text-sm text-gray-700">Basic Plan</span>
+  </label>
+</div>
+
+<div className="w-full p-1.5 sm:w-1/2">
+  <label className="inline-flex items-center">
+    <input
+      className="h-4 w-4 text-gray-400 border-gray-300 focus:ring-gray-400 focus:ring-offset-1"
+      type="radio"
+      name="plan"
+      value="premium"
+      checked={formData.plan === "premium"}
+      onChange={handleInputChange}
+    />
+    <span className="ml-2 text-sm text-gray-700">Premium Plan</span>
+  </label>
+</div>
+
+            
           </div>
         </div>
       </div>

@@ -91,18 +91,26 @@
 
 .stretching-table-section {
   margin-top: 20px;
-  /* overflow-x: auto; */
-
-
+  height: fit-content;
+  overflow-y: hidden;
+  overflow-x: auto;
   padding: 5px 20px;
   padding-bottom: 20px;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
 }
 
 .stretching-table {
+  position: relative;
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
   /* Add margin to avoid overlapping */
+  /* max-width: 500px; */
+  width: 100%;
+
+  margin-bottom: 100px;
 }
 
 .stretching-table th,

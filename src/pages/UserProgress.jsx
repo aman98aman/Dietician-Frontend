@@ -8,7 +8,10 @@ import BMI from './BMI.jsx';
 const UserProgress = () => {
   const [bmiData, setBmiData] = useState([]);
   const [weight, setWeight] = useState(0);
+  const [weightData, setWeightData] = useState();
   const [BMIData, setBMIData] = useState(null)
+  const [progressImage, setProgressImages] = useState([]);
+  const [loadingImages, setLoadingImages] = useState(false);
 
   const token = localStorage.getItem("dietToken");
   const decoded = token ? decodeJwt(token) : null;
@@ -47,6 +50,33 @@ const UserProgress = () => {
     getBMI();
     console.log('api called');
 
+    async function fetchImage() {
+      //console.log("email is", location.state.userData.email)
+      try {
+        setLoadingImages(true);
+        const res = await fetch("http://localhost:3333/users/getUsersPic", {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email: decoded.userData.email })
+        });
+
+        const resJson = await res.json();
+        console.log("Res.json in the single user is", resJson);
+
+
+        setProgressImages(resJson.data);
+
+        setLoadingImages(false);
+
+      } catch (e) {
+        toast.error("Got some error", e)
+      }
+    }
+
+    fetchImage();
+
   }, []);
 
   async function handleUpload(e) {
@@ -56,7 +86,7 @@ const UserProgress = () => {
       const formData = new FormData();
       formData.append('image', e.target.files[0]);
       formData.append('email', JSON.stringify(decoded.userData.email));
-      formData.append('weight', JSON.stringify(weight));
+      formData.append('weight', JSON.stringify(weightData));
 
       const res = await fetch("http://localhost:3333/users/uploadpic", {
         method: "POST",
@@ -87,7 +117,7 @@ const UserProgress = () => {
               BMI
             </h2>
             <span className="text-5xl text-gray-600">{BMIData}</span>
-            <p className="text-3xl text-gray-600">{BMIData < 18.5 ? "Underweight" :BMIData >= 18.5 && BMIData <= 24.9 ?"Normal" : "Overweight / Obese"}</p>
+            <p className="text-3xl text-gray-600">{BMIData < 18.5 ? "Underweight" : BMIData >= 18.5 && BMIData <= 24.9 ? "Normal" : "Overweight / Obese"}</p>
             <div className="group relative mx-auto w-32 justify-center">
               <span className="text- rounded font-bold text-gray-600 shadow-sm">
                 ⓘ
@@ -128,7 +158,7 @@ const UserProgress = () => {
               placeholder=".kg"
               defaultValue={weight}
               step={0.1}
-              onChange={(e) => { setWeight(e.target.value) }}
+              onChange={(e) => { setWeightData(e.target.value) }}
               className="w-1/4 rounded px-3 py-3 text-center text-xl bg-gray-200 text-gray-600"
             />
             <button className="mx-auto mt-4 block rounded-full border border-gray-500 p-3 text-xs text-gray-600 hover:bg-gray-500 hover:text-gray-200">
@@ -147,11 +177,26 @@ const UserProgress = () => {
                 onChange={handleUpload}
               />
             </label>
-            <p className="mt-4 text-xs dark:text-slate-300">
+            <p className="mt-4 text-xs text-black ">
               Upload your progress picture
             </p>
           </div>
         </div>
+
+        <section className="w-full rounded-lg bg-white p-8 mb-10 shadow-lg">
+          <div className="mb-8">
+            <h2 className="text-xl text-black">Progress Pictures</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+            {
+
+              (loadingImages) ? <div>Loading images...!!</div> : (progressImage.length == 0) ? <div>No images uploaded</div> : progressImage.map((value) => {
+                return <ImageComponent gifData={value.img.data.data} />
+              })
+            }
+          </div>
+        </section>
 
         <div>
           <BMI data={bmiData} />
@@ -162,3 +207,34 @@ const UserProgress = () => {
 };
 
 export default UserProgress;
+
+
+
+const ImageComponent = ({ gifData }) => {
+  // Assuming gifData is the base64 encoded GIF image data
+
+  const createBase64String = (gifData) => {
+    let binary = '';
+    const bytes = new Uint8Array(gifData);
+    const length = bytes.byteLength;
+
+    for (let i = 0; i < length; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+
+    return btoa(binary);
+  };
+  const base64String = createBase64String(gifData);
+
+  return (
+    <div>
+      {gifData && (
+        <img
+          src={`data:image/png;base64,${base64String}`}
+          className="rounded-lg object-cover h-full"
+          alt="GIF Image"
+        />
+      )}
+    </div>
+  );
+};
