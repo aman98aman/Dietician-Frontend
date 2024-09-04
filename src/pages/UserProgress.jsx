@@ -7,6 +7,7 @@ import BMI from './BMI.jsx';
 
 const UserProgress = () => {
   const [bmiData, setBmiData] = useState([]);
+  const [bmiChartData, setBmiChartData] = useState([]);
   const [weight, setWeight] = useState(0);
   const [weightData, setWeightData] = useState();
   const [BMIData, setBMIData] = useState(null)
@@ -32,15 +33,29 @@ const UserProgress = () => {
     }
   }, [decoded]);
 
+
+
+
   async function getBMI() {
     try {
       const response = await axios.post("http://localhost:3333/users/getProgressWeight", {
         email: decoded?.userData?.email
       });
 
-      const data = await response.data;
+      const data = await response.data.data;
       console.log("BMIIIII response Data", data);
-      setBmiData(data);
+
+      if (data) {
+        // Format the data for the recharts LineChart component
+        const formattedData = data.map((entry) => ({
+          date: new Date(entry.createdAt).toLocaleDateString(), // Format date
+          weight: entry.weight, // Use weight as the data point
+        }));
+
+        setBmiData(formattedData);
+        setBmiChartData(data)
+      }
+
     } catch (e) {
       console.log('error', e.message);
     }
@@ -199,7 +214,7 @@ const UserProgress = () => {
         </section>
 
         <div>
-          <BMI data={bmiData} />
+          <BMI data={bmiChartData} />
         </div>
       </main>
     </>

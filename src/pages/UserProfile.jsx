@@ -29,7 +29,6 @@ const UserProfile = () => {
     const jsonData = await response.json();
 
     const gifData = jsonData?.data?.data?.data;
-    console.log("data", gifData);
 
     const createBase64String = (gifData) => {
       let binary = '';
@@ -44,7 +43,6 @@ const UserProfile = () => {
     };
 
     const base64String = createBase64String(gifData);
-    console.log("base64String", base64String);
     setImage(base64String);
   }
 
