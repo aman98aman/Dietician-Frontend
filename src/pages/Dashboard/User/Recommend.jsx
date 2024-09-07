@@ -65,12 +65,12 @@ const Recommend = () => {
         fields = ['workoutType', 'name', 'sets', 'reps', 'rest', 'howToDo'];
         break;
       case 'Meal':
-        headers = ['Ingredients', 'Protein', 'Fat', 'Carbs', 'Calories', 'Recipe'];
-        fields = ['ingredients', 'protein', 'fat', 'carbs', 'calories', 'recipe'];
+        headers = ['Ingredients', 'Protein', 'Fat', 'Carbs', 'Calories', 'Fiber', 'Quantity'];
+        fields = ['name', 'protein', 'fat', 'carbs', 'calories', 'calories', 'quantity'];
         break;
       case 'Grocery List':
-        headers = ['Sr. No.', 'Ingredients', 'Quantity'];
-        fields = ['srNo', 'ingredients', 'quantity'];
+        headers = ['Ingredients', 'Protein', 'Fat', 'Carbs', 'Calories', 'Fibre', 'Quantity'];
+        fields = ['ingredients', 'protein', 'fat', 'carbs', 'calories', 'fibre', 'quantity'];
         break;
       case 'Instruction':
         headers = ['Col1', 'Col2', 'Col3'];

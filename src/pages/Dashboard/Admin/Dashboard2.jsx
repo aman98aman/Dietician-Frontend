@@ -139,8 +139,68 @@ const tabData = {
     { "id": 15, "name": "Russian Twist" },
     { "id": 16, "name": "Plank Hip Twists" },
     { "id": 17, "name": "Side Oblique Crunches" }
+  ],
+  'Meal': [
+    { "id": 1, "name": "Eggs" },
+    { "id": 2, "name": "Chicken" },
+    { "id": 3, "name": "Zero fat milk" },
+    { "id": 4, "name": "Oats" },
+    { "id": 5, "name": "Raw quinoa" },
+    { "id": 6, "name": "Cinnamon powder" },
+    { "id": 7, "name": "Almonds" },
+    { "id": 8, "name": "Walnuts" },
+    { "id": 9, "name": "Chia seeds" },
+    { "id": 10, "name": "Plain Greek yogurt" },
+    { "id": 11, "name": "Brown bread" },
+    { "id": 12, "name": "Peanuts" },
+    { "id": 13, "name": "Kidney beans" },
+    { "id": 14, "name": "Black chana" },
+    { "id": 15, "name": "Spinach" },
+    { "id": 16, "name": "Carrot" },
+    { "id": 17, "name": "French beans" },
+    { "id": 18, "name": "Broccoli" },
+    { "id": 19, "name": "Bell peppers" },
+    { "id": 20, "name": "Lettuce" },
+    { "id": 21, "name": "Olives" },
+    { "id": 22, "name": "Beets" },
+    { "id": 23, "name": "Tomato" },
+    { "id": 24, "name": "Onion" },
+    { "id": 25, "name": "Mushrooms" },
+    { "id": 26, "name": "Cucumber" },
+    { "id": 27, "name": "Lemon" },
+    { "id": 28, "name": "Mint" },
+    { "id": 29, "name": "Ginger" },
+    { "id": 30, "name": "Mixed berries" },
+    { "id": 31, "name": "Banana" },
+    { "id": 32, "name": "Apple" },
+    { "id": 33, "name": "Orange" },
+    { "id": 34, "name": "Kiwi" },
+    { "id": 35, "name": "Pineapple" },
+    { "id": 36, "name": "Honey" },
+    { "id": 37, "name": "Flax seeds" },
+    { "id": 38, "name": "Peanut butter" },
+    { "id": 39, "name": "Brown rice" },
+    { "id": 40, "name": "White chana" },
+    { "id": 41, "name": "Olive oil" },
+    { "id": 42, "name": "Salt & black pepper" },
+    { "id": 43, "name": "Raisins" },
+    { "id": 44, "name": "Cabbage" },
+    { "id": 45, "name": "Sweet potato" },
+    { "id": 46, "name": "Whole grain pasta" },
+    { "id": 47, "name": "Coffee" },
+    { "id": 48, "name": "Green tea" },
+    { "id": 49, "name": "Papaya" },
+    { "id": 50, "name": "Watermelon" },
+    { "id": 51, "name": "Paneer" },
+    { "id": 52, "name": "Whey protein" },
+    { "id": 53, "name": "Grapes" },
+    { "id": 54, "name": "Zucchini" }
   ]
+
 };
+
+
+
 
 
 export const initialData = {
@@ -158,6 +218,87 @@ function Dashboard2({ onEdit, currentCategory }) {
   const [activeSection, setActiveSection] = useState('Warm up');
   const [sectionData, setSectionData] = useState(initialData);
   const [items, setItems] = useState(tabData[activeSection ? activeSection : null]);
+
+  const nutritionData = {
+    "Eggs": { calories: 68, fiber: 0, protein: 6.3, carbs: 0.6, fat: 4.8 },
+    "Chicken": { calories: 2.39, fiber: 0, protein: 0.27, carbs: 0, fat: 0.13 },
+    "Zero fat milk": { calories: 172, fiber: 0, protein: 17.5, carbs: 24.5, fat: 0.2 },
+    "Oats": { calories: 3.89, fiber: 0.1, protein: 0.07, carbs: 0.67, fat: 0.07 },
+    "Raw quinoa": { calories: 3.68, fiber: 0.1, protein: 0.12, carbs: 0.64, fat: 0.06 },
+    "Cinnamon powder": { calories: 2.47, fiber: 1.2, protein: 0.04, carbs: 0.81, fat: 0.12 },
+    "Almonds": { calories: 5.76, fiber: 0.12, protein: 0.21, carbs: 0.22, fat: 0.49 },
+    "Walnuts": { calories: 6.54, fiber: 0.07, protein: 0.15, carbs: 0.14, fat: 0.65 },
+    "Chia seeds": { calories: 4.86, fiber: 0.34, protein: 0.17, carbs: 0.42, fat: 0.31 },
+    "Plain Greek yogurt": { calories: 0.59, fiber: 0, protein: 0.1, carbs: 0.04, fat: 0.04 },
+    "Brown bread": { calories: 2.47, fiber: 0.1, protein: 0.09, carbs: 0.47, fat: 0.02 },
+    "Peanuts": { calories: 5.67, fiber: 0.09, protein: 0.25, carbs: 0.16, fat: 0.49 },
+    "Kidney beans": { calories: 3.33, fiber: 0.08, protein: 0.24, carbs: 0.6, fat: 0.12 },
+    "Black chana": { calories: 3.64, fiber: 0.1, protein: 0.19, carbs: 0.61, fat: 0.12 },
+    "Spinach": { calories: 0.23, fiber: 0.1, protein: 0.03, carbs: 0.04, fat: 0.05 },
+    "Carrot": { calories: 0.41, fiber: 0.03, protein: 0.01, carbs: 0.1, fat: 0.02 },
+    "French beans": { calories: 0.31, fiber: 0.03, protein: 0.02, carbs: 0.07, fat: 0.02 },
+    "Broccoli": { calories: 0.34, fiber: 0.03, protein: 0.03, carbs: 0.07, fat: 0.03 },
+    "Bell peppers": { calories: 0.2, fiber: 0.01, protein: 0.01, carbs: 0.05, fat: 0.02 },
+    "Lettuce": { calories: 0.15, fiber: 0.01, protein: 0.01, carbs: 0.03, fat: 0.01 },
+    "Olives": { calories: 1.15, fiber: 0.03, protein: 0.03, carbs: 0.06, fat: 0.11 },
+    "Beets": { calories: 0.43, fiber: 0.02, protein: 0.01, carbs: 0.1, fat: 0.02 },
+    "Tomato": { calories: 0.18, fiber: 0.01, protein: 0.01, carbs: 0.04, fat: 0.02 },
+    "Onion": { calories: 0.4, fiber: 0.01, protein: 0.01, carbs: 0.09, fat: 0.02 },
+    "Mushrooms": { calories: 0.22, fiber: 0.01, protein: 0.03, carbs: 0.03, fat: 0.03 },
+    "Cucumber": { calories: 0.16, fiber: 0.01, protein: 0.01, carbs: 0.04, fat: 0.01 },
+    "Lemon": { calories: 0.29, fiber: 0.03, protein: 0.01, carbs: 0.09, fat: 0.01 },
+    "Mint": { calories: 0.44, fiber: 0.08, protein: 0.03, carbs: 0.09, fat: 0.02 },
+    "Ginger": { calories: 0.8, fiber: 0.2, protein: 0.02, carbs: 0.18, fat: 0.06 },
+    "Mixed berries": { calories: 0.57, fiber: 0.03, protein: 0.01, carbs: 0.14, fat: 0.03 },
+    "Banana": { calories: 105, fiber: 3.1, protein: 1.3, carbs: 27, fat: 0.3 },
+    "Apple": { calories: 95, fiber: 4.4, protein: 0.5, carbs: 25, fat: 0.3 },
+    "Orange": { calories: 62, fiber: 3.1, protein: 1.2, carbs: 15.4, fat: 0.2 },
+    "Kiwi": { calories: 42, fiber: 2.1, protein: 0.8, carbs: 10.1, fat: 0.4 },
+    "Pineapple": { calories: 452, fiber: 13, protein: 4.9, carbs: 119, fat: 1.1 },
+    "Honey": { calories: 3.04, fiber: 0, protein: 0.01, carbs: 0.82, fat: 0 },
+    "Flax seeds": { calories: 5.34, fiber: 0.27, protein: 0.19, carbs: 0.29, fat: 0.42 },
+    "Peanut butter": { calories: 5.88, fiber: 0.06, protein: 0.25, carbs: 0.2, fat: 0.5 },
+    "Brown rice": { calories: 3.65, fiber: 0.03, protein: 0.07, carbs: 0.77, fat: 0.03 },
+    "White chana": { calories: 3.64, fiber: 0.1, protein: 0.19, carbs: 0.61, fat: 0.06 },
+    "Olive oil": { calories: 4000, fiber: 0, protein: 0, carbs: 0, fat: 100 },
+    "Salt & black pepper": { calories: 0, fiber: 0, protein: 0, carbs: 0, fat: 0 },
+    "Raisins": { calories: 2.99, fiber: 0.03, protein: 0.03, carbs: 0.79, fat: 0.03 },
+    "Cabbage": { calories: 0.25, fiber: 0.01, protein: 0.01, carbs: 0.06, fat: 0.01 },
+    "Sweet potato": { calories: 0.86, fiber: 0.02, protein: 0.02, carbs: 0.2, fat: 0.02 },
+    "Whole grain pasta": { calories: 3.57, fiber: 0.1, protein: 0.13, carbs: 0.74, fat: 0.06 },
+    "Coffee": { calories: 2, fiber: 0, protein: 0.2, carbs: 0, fat: 0.01 },
+    "Green tea": { calories: 0, fiber: 0, protein: 0, carbs: 0, fat: 0 },
+    "Papaya": { calories: 59, fiber: 2.7, protein: 0.9, carbs: 15, fat: 0.4 },
+    "Watermelon": { calories: 86, fiber: 0.6, protein: 1.7, carbs: 22, fat: 0.2 },
+    "Paneer": { calories: 2.57, fiber: 0, protein: 0.18, carbs: 0.04, fat: 0.2 },
+    "Whey protein": { calories: 4, fiber: 0, protein: 0.8, carbs: 0.3, fat: 0.1 },
+    "Grapes": { calories: 0.69, fiber: 0.01, protein: 0.01, carbs: 0.18, fat: 0.01 },
+    "Zucchini": { calories: 0.17, fiber: 0.01, protein: 0.01, carbs: 0.03, fat: 0.01 }
+  };
+
+
+  const handleQuantityChange = (index, value) => {
+    const item = sectionData[activeSection][index];
+
+    const quantity = parseFloat(value) || 1;
+    console.log("Quantiity", item)
+
+    if (item.name) {
+      const nutrientInfo = nutritionData[item.name];
+      console.log('value', (nutrientInfo.calories * quantity).toFixed(2))
+
+      if (nutrientInfo) {
+        handleTableDataChange(index, 'calories', (nutrientInfo.calories * quantity).toFixed(2));
+        handleTableDataChange(index, 'fiber', (nutrientInfo.fiber * quantity).toFixed(2));
+        handleTableDataChange(index, 'protein', (nutrientInfo.protein * quantity).toFixed(2));
+        handleTableDataChange(index, 'carbs', (nutrientInfo.carbs * quantity).toFixed(2));
+        handleTableDataChange(index, 'fat', (nutrientInfo.fat * quantity).toFixed(2));
+      }
+    }
+
+    handleTableDataChange(index, 'quantity', value);
+  };
+
 
 
   const handleSubtitleChange = (e) => {
@@ -234,12 +375,12 @@ function Dashboard2({ onEdit, currentCategory }) {
         fields = ['workoutType', 'name', 'sets', 'reps', 'rest', 'howToDo'];
         break;
       case 'Meal':
-        headers = ['Ingredients', 'Protein', 'Fat', 'Carbs', 'Calories', 'Recipe', 'Fibre', 'Quantity'];
-        fields = ['ingredients', 'protein', 'fat', 'carbs', 'calories', 'recipe', 'fibre', 'quantity'];
+        headers = ['Ingredients', 'Protein', 'Fat', 'Carbs', 'Calories', 'Fiber', 'Quantity'];
+        fields = ['name', 'protein', 'fat', 'carbs', 'calories', 'calories', 'quantity'];
         break;
       case 'Grocery List':
-        headers = ['Sr. No.', 'Ingredients', 'Quantity'];
-        fields = ['srNo', 'ingredients', 'quantity'];
+        headers = ['Ingredients', 'Protein', 'Fat', 'Carbs', 'Calories', 'Fibre', 'Quantity'];
+        fields = ['ingredients', 'protein', 'fat', 'carbs', 'calories', 'fibre', 'quantity'];
         break;
       case 'Instruction':
         headers = ['Col1', 'Col2', 'Col3'];
@@ -267,6 +408,24 @@ function Dashboard2({ onEdit, currentCategory }) {
 
     const handleOnSelect = (value, index, field) => {
       // the item selected
+      console.log("--------field", field)
+      if (activeSection === "Meal") {
+        console.log("active--------------------------", activeSection)
+        console.log("currentdata--------------------------", currentData[field])
+        const ingredientName = value.name;
+        const nutrientInfo = nutritionData[ingredientName];
+
+        if (nutrientInfo) {
+          handleTableDataChange(index, 'calories', nutrientInfo.calories);
+          handleTableDataChange(index, 'fiber', nutrientInfo.fiber);
+          handleTableDataChange(index, 'protein', nutrientInfo.protein);
+          handleTableDataChange(index, 'carbs', nutrientInfo.carbs);
+          handleTableDataChange(index, 'fat', nutrientInfo.fat);
+        }
+
+        handleTableDataChange(index, field, ingredientName);
+        return
+      }
 
       console.log("onSelect", value, index, field)
 
@@ -299,7 +458,7 @@ function Dashboard2({ onEdit, currentCategory }) {
             <thead>
               <tr>
                 {headers.map((header, index) => (
-                  <th key={index} style={header === "Sr. No." ? { maxWidth: "50px" } : {}}>{header}</th>
+                  <th key={index} style={header === "Sr. No." ? { maxWidth: "20px" } : {}}>{header}</th>
                 ))}
               </tr>
             </thead>
@@ -310,7 +469,7 @@ function Dashboard2({ onEdit, currentCategory }) {
                 return (
                   <tr key={index}>
                     {fields.map((field, idx) => (
-                      < td key={idx} style={field === "name" ? { width: "200%" } : {}} >
+                      < td key={idx} style={field === "srNo" ? { maxWidth: "30px" } : field === "name" ? { } : { maxWidth: "0px" }} >
                         {
                           field === "name" ? (
                             <ReactSearchAutocomplete
@@ -337,13 +496,26 @@ function Dashboard2({ onEdit, currentCategory }) {
                                 zIndex: calculatedZIndex
                               }}
                             />
+                          ) : field === 'quantity' ? (
+                            <input
+                              type="number"
+                              value={item?.[field]}
+                              onChange={(e) => handleQuantityChange(index, e.target.value)}
+                              style={{ width: '100%' }}
+                            />
+                          ) : field === 'protein' || 'fat' || 'carbs' || 'calories' || 'calories' ? (
+                            <input
+                              type="text"
+                              value={item?.[field] || ''}
+                              onChange={(e) => handleTableDataChange(index, field, e.target.value)}
+                              style={{ width: '100%' }}
+                            />
                           ) : (
                             <input
                               type="text"
-                              defaultValue={item?.[field] ?? field === "srNo" ? `${index + 1}` : ""}
-                              value={field === "srNo" ? `${index + 1}` : null}
+                              value={item?.[field] ?? field === "srNo" ? `${index + 1}` : null}
                               onChange={(e) => handleTableDataChange(index, field, e.target.value)}
-                              style={field === "srNo" ? { maxWidth: "100px" } : {}}
+                              style={field === "srNo" ? { maxWidth: "20px" } : { width: '100%' }}
                             />
                           )
                         }
@@ -358,7 +530,7 @@ function Dashboard2({ onEdit, currentCategory }) {
             <img src="/minus.png" style={{ width: "24px", position: "absolute", bottom: -10, left: -10 }} onClick={removeRow} />
             <img src="/plus.png" style={{ width: "24px", position: "absolute", bottom: -10, right: -10 }} onClick={addNewRow} />
           </table>
-        
+
         </section >
         <div className="table-notes mt-5">
           <p>Modify the table content as needed.</p>
