@@ -3,6 +3,7 @@ import { useRef, useState } from 'react';
 import { decodeJwt } from '../pages/middelwares';
 import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
+import api from "./AxiosInterceptor";
 
 
 const RaiseRequest = () => {
@@ -23,13 +24,10 @@ const RaiseRequest = () => {
             phoneNumber: userData.phoneNumber,
             description: inputRef.current.value
         }
-        const res = await fetch("http://localhost:3333/request/postRequest", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(reqBody)
-        })
+        const res = await api.post(
+          "/request/postRequest",
+          JSON.stringify(reqBody),
+        );
         const resJson = await res.json();
         if (resJson.success) {
             toast("Succcesfully sent")

@@ -6,6 +6,7 @@ import { adminLoginSuccess, userLoginSuccess } from "../Redux/auth/action";
 import { useDispatch } from "react-redux";
 import { decodeJwt } from "./middelwares";
 import Image2 from "../assets/back.jpg";
+import api from "../components/AxiosInterceptor";
 
 function Login() {
   const navigate = useNavigate();
@@ -35,14 +36,7 @@ function Login() {
       }
       setLoading(true);
       // Send POST request to backend for login
-      const response = await fetch("http://localhost:3333/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-        // Include credentials (cookies) in the request
-      });
+      const response = await api.post("/login", JSON.stringify(formData));
 
       const jsonResponse = await response.json();
       console.log("jsonres is", jsonResponse);

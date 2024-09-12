@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { decodeJwt } from "../../middelwares"
 import { toast } from "react-toastify"
+import api from "../../../components/AxiosInterceptor";
 
 
 
@@ -15,14 +16,10 @@ const Meals = () => {
             try {
                 const decoded = decodeJwt(localStorage.getItem("dietToken"));
                 console.log("decoded in meals", decoded);
-                const response = await fetch("http://localhost:3333/users/getUserDiet", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({ email: decoded.userData.email }),
-                    // Include credentials (cookies) in the request
-                })
+                const response = await api.post(
+                  "/users/getUserDiet",
+                  JSON.stringify({ email: decoded.userData.email }),
+                );
 
                 const jsonResponse = await response.json();
                 console.log("response is", jsonResponse);

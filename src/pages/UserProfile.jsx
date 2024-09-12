@@ -5,33 +5,42 @@ import { jwtDecode } from "jwt-decode";
 import { useEffect } from "react";
 //import { useEffect } from "react";
 import { useState } from "react";
+import api from "../components/AxiosInterceptor";
 // import { toast } from "react-toastify";
 
 const UserProfile = () => {
-
   const [image, setImage] = useState("");
 
   const token = localStorage.getItem("dietToken");
   const decode = jwtDecode(token);
 
-  const { firstName, lastName, email, phoneNumber, age, weight, height, gender, fitnessGoal, occupation, gymDaysPerWeek, } = decode.userData;
+  const {
+    firstName,
+    lastName,
+    email,
+    phoneNumber,
+    age,
+    weight,
+    height,
+    gender,
+    fitnessGoal,
+    occupation,
+    gymDaysPerWeek,
+  } = decode.userData;
 
   async function getProfileData() {
-    console.log("inside getprofiledata in userprofile", email)
-    const response = await fetch("http://localhost:3333/users/getProfilePic", {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ email: email })
-    });
+    console.log("inside getprofiledata in userprofile", email);
+    const response = await api.post(
+      "/users/getProfilePic",
+      JSON.stringify({ email: email }),
+    );
 
     const jsonData = await response.json();
 
     const gifData = jsonData?.data?.data?.data;
 
     const createBase64String = (gifData) => {
-      let binary = '';
+      let binary = "";
       const bytes = new Uint8Array(gifData);
       const length = bytes.byteLength;
 
@@ -46,22 +55,18 @@ const UserProfile = () => {
     setImage(base64String);
   }
 
-
   useEffect(() => {
     getProfileData();
   }, []);
 
-  const handleImageUpload = async (e)=> {
-    console.log("eeeeeeeeee-------->>>", e)
+  const handleImageUpload = async (e) => {
+    console.log("eeeeeeeeee-------->>>", e);
 
     const formData = new FormData();
-    formData.append('image', e.target.files[0]);
-    formData.append('email', JSON.stringify(decode.userData.email));
+    formData.append("image", e.target.files[0]);
+    formData.append("email", JSON.stringify(decode.userData.email));
 
-    const response = await fetch("http://localhost:3333/users/addProfilePic", {
-      method : "POST",
-      body : formData
-    });
+    const response = await api.post("/users/addProfilePic", formData);
 
     const jsonData = await response.json();
     console.log("jsonData", jsonData);
@@ -72,7 +77,7 @@ const UserProfile = () => {
     // } else {
     //   toast.error("got some problem", e);
     // }
-  }
+  };
 
   return (
     <div className="dark">
@@ -82,13 +87,13 @@ const UserProfile = () => {
             <h2 className="text-xl text-gray-600">Profile</h2>
           </div>
           <div className="w-full ">
-            <div className="flex justify-center items-center">
+            <div className="flex items-center justify-center">
               <div className="relative">
                 <img
                   src={`data:image/png;base64,${image}`}
-                  className="w-32 h-32 rounded-full object-cover cursor-pointer"
+                  className="h-32 w-32 cursor-pointer rounded-full object-cover"
                   alt="GIF Image"
-                  onClick={() => document.getElementById('fileInput').click()}
+                  onClick={() => document.getElementById("fileInput").click()}
                 />
                 <input
                   type="file"
@@ -100,7 +105,9 @@ const UserProfile = () => {
               </div>
             </div>
             <div className="mb-4 mt-8 flex flex-col gap-2 px-4 font-medium dark:text-gray-600">
-              <span className="w-fit">{firstName} {lastName}</span>
+              <span className="w-fit">
+                {firstName} {lastName}
+              </span>
               <span className="w-fit">{email}</span>
               <span className="w-fit">{phoneNumber}</span>
               <Link className="text-gray-600">Edit</Link>
@@ -109,15 +116,13 @@ const UserProfile = () => {
         </section>
 
         <section>
-          <section className="w-full rounded-lg p-8 shadow-lg bg-gray-200">
+          <section className="w-full rounded-lg bg-gray-200 p-8 shadow-lg">
             <div className="mb-8">
               <h2 className="text-xl text-gray-600">Details</h2>
             </div>
             <div className="grid grid-cols-2 gap-4 dark:text-slate-200 md:grid-cols-3">
               <div className="rounded-md bg-gray-300 px-8 py-4 shadow">
-                <h4 className="text-sm text-gray-600">
-                  Height
-                </h4>
+                <h4 className="text-sm text-gray-600">Height</h4>
                 <p className="text-gray-600">{height} cm</p>
               </div>
               <div className="rounded-md bg-gray-300 px-8 py-4 shadow">
@@ -127,7 +132,9 @@ const UserProfile = () => {
                 <p className="text-gray-600">{weight} kg</p>
               </div>
               <div className="rounded-md bg-gray-300 px-8 py-4 shadow">
-                <h4 className="text-sm text-slate-700 dark:text-slate-500">Age</h4>
+                <h4 className="text-sm text-slate-700 dark:text-slate-500">
+                  Age
+                </h4>
                 <p className="text-gray-600">{age}</p>
               </div>
               <div className="rounded-md bg-gray-300 px-8 py-4 shadow">

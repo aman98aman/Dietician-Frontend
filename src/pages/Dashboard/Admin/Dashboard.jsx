@@ -3,28 +3,27 @@ import Sidebar from "./Sidebar";
 import { Outlet } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUserDetails } from "../../../Redux/userDetails/action";
+import api from "../../../components/AxiosInterceptor";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  
-  useEffect(()=>{
-    async function fetchdata(){
+
+  useEffect(() => {
+    async function fetchdata() {
       //console.log("data fetching in the dashboard starts...!!")
-      const data = await fetch("http://localhost:3333/users/allUser");
+      const data = await api.get("/users/allUser");
       const resData = await data.json();
       //console.log("response received", resData);
-      dispatch(setUserDetails(resData.data))
+      dispatch(setUserDetails(resData.data));
       //onsole.log("Action is dispatched in the fetchdata function")
     }
     fetchdata();
-
 
     const intervalId = setInterval(fetchdata, 10000);
 
     // Clean up function to clear interval on component unmount
     return () => clearInterval(intervalId);
-
-  },[])
+  }, []);
 
   //console.log("Dashboard is runned")
   return (
@@ -32,7 +31,7 @@ const Dashboard = () => {
       <header className="absolute w-full md:w-72 md:min-w-72 lg:relative">
         <Sidebar />
       </header>
-      <main className="container h-full min-h-screen text-black px-2">
+      <main className="container h-full min-h-screen px-2 text-black">
         <button
           className="m-2 rounded-md p-2 shadow lg:hidden"
           type="button"
@@ -55,7 +54,7 @@ const Dashboard = () => {
           </svg>
         </button>
 
-        <Outlet />        
+        <Outlet />
       </main>
     </div>
   );

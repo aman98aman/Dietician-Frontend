@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useLocation } from 'react-router-dom';
+import api from "../components/AxiosInterceptor";
 
 function Button({ onClick, text, disabled }) {
 
@@ -103,13 +104,10 @@ function UserDetailForm() {
     console.log("complete user data is", completeUserData);
 
     setBtnDisable(true)
-    const sendUserData = await fetch("http://localhost:3333/users/addUser",{
-        method:"POST",
-        headers:{
-          "Content-Type":"application/json"
-        },
-        body:JSON.stringify(completeUserData)
-    })
+    const sendUserData = await api.post(
+      "/users/addUser",
+      JSON.stringify(completeUserData),
+    );
 
     const sendUserDataJson = await sendUserData.json();
 

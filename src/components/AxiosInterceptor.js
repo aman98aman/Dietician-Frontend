@@ -1,17 +1,29 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:3333',
-  timeout: 10000, 
+  baseURL: "https://fitness.arshsandhufitness.com/",
+  timeout: 10000,
 });
 
 api.interceptors.request.use(
-  config => {
+  (config) => {
+    if (
+      config?.method === "POST" &&
+      config?.data &&
+      !(config?.data instanceof FormData)
+    ) {
+      return {
+        ...config,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+    }
     return config;
   },
-  error => {
+  (error) => {
     return Promise.reject(error);
-  }
+  },
 );
 
 api.interceptors.response.use(
