@@ -3,7 +3,7 @@ import Image3 from "../assets/Image3.jpg";
 import Image4 from "../assets/Image4.png";
 import Google from "../assets/google.png";
 import WeightGainManagement from "../assets/WeightGainManagement.svg";
-import TalkToExpert from "../assets/TalkToExpert.svg";
+import TalkToExpert from "../assets/Talktoexpert.svg";
 
 // import CardMarquee from './CardMarquee'
 
