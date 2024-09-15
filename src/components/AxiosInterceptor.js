@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: "https://fitness.arshsandhufitness.com/",
+  baseURL: "https://dietbackend.azurewebsites.net/",
   timeout: 10000,
 });
 
