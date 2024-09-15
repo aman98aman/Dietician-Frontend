@@ -8,11 +8,12 @@ const api = axios.create({
 api.interceptors.request.use(
   (config) => {
     if (
-      config?.method === "POST" &&
+      config?.method === "post" &&
       config?.data &&
       !(config?.data instanceof FormData)
     ) {
-      return {
+    
+      return { 
         ...config,
         headers: {
           "Content-Type": "application/json",

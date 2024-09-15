@@ -8,7 +8,7 @@ export default async function getProfilePic(email) {
       JSON.stringify({ email: email }),
     );
 
-    const jsonData = await response.json();
+    const jsonData = response;
 
     const gifData = jsonData?.data?.data?.data;
     console.log("data", gifData);

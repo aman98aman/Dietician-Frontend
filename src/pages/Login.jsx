@@ -38,7 +38,7 @@ function Login() {
       // Send POST request to backend for login
       const response = await api.post("/login", JSON.stringify(formData));
 
-      const jsonResponse = await response.json();
+      const jsonResponse = response;
       console.log("jsonres is", jsonResponse);
 
       // Handle user not registered or wrong cred

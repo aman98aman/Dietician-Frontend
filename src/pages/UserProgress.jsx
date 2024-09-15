@@ -71,7 +71,7 @@ const UserProgress = () => {
           JSON.stringify({ email: decoded.userData.email }),
         );
 
-        const resJson = await res.json();
+        const resJson = res;
         console.log("Res.json in the single user is", resJson);
 
         setProgressImages(resJson.data);
@@ -96,7 +96,7 @@ const UserProgress = () => {
 
       const res = await api.post("/users/uploadpic", formData);
 
-      const resJson = await res.json();
+      const resJson = await res;
 
       if (resJson.success) {
         toast.success("Successfully uploaded image"); // Display success message

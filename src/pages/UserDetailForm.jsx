@@ -109,7 +109,7 @@ function UserDetailForm() {
       JSON.stringify(completeUserData),
     );
 
-    const sendUserDataJson = await sendUserData.json();
+    const sendUserDataJson = sendUserData;
 
     if(sendUserDataJson.success){
       setBtnDisable(false)

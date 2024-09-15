@@ -20,7 +20,7 @@ const Requests = () => {
         JSON.stringify({ id: id }),
       );
 
-      const resJson = await res.json();
+      const resJson = res;
       if (resJson.success) {
         // Correctly filter out the deleted item
         const newState = allRequests.filter(
@@ -46,7 +46,7 @@ const Requests = () => {
 
   function fetchdata() {
     const data = api.get("/users/allUser").then((data) => {
-      const resData = data.json();
+      const resData = data;
       dispatch(setUserDetails(resData.data));
     });
   }
@@ -60,7 +60,7 @@ const Requests = () => {
     async function fetchData() {
       try {
         const res = await api.get("/request/getRequest");
-        const jsonres = await res.json();
+        const jsonres = res;
         if (jsonres.success) {
           setAllRequests(jsonres.data);
         } else {

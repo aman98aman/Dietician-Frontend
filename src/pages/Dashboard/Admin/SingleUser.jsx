@@ -60,7 +60,7 @@ const SingleUser = () => {
           diet: recommendedMeal,
         }),
       );
-      const jsonResponse = await response.json();
+      const jsonResponse = response;
       if (jsonResponse.success) {
         toast.success(jsonResponse.message);
       } else {
@@ -231,7 +231,7 @@ const SingleUser = () => {
   useEffect(() => {
     const fetchMealData = async () => {
       const response = await api.get(`/diet/getMeal`);
-      const jsonResponse = await response.json();
+      const jsonResponse = await response;
       setTotalMeals(jsonResponse.data);
     };
     fetchMealData();
@@ -247,7 +247,7 @@ const SingleUser = () => {
           JSON.stringify({ email: location.state.userData.email }),
         );
 
-        const resJson = await res.json();
+        const resJson = res;
         console.log("Res.json in the single user is", resJson);
 
         setProgressImages(resJson.data);

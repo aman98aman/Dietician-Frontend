@@ -35,7 +35,7 @@ const UserProfile = () => {
       JSON.stringify({ email: email }),
     );
 
-    const jsonData = await response.json();
+    const jsonData = response;
 
     const gifData = jsonData?.data?.data?.data;
 
@@ -68,7 +68,7 @@ const UserProfile = () => {
 
     const response = await api.post("/users/addProfilePic", formData);
 
-    const jsonData = await response.json();
+    const jsonData = await response;
     console.log("jsonData", jsonData);
 
     // if (jsonData.success) {

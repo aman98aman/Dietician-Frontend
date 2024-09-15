@@ -12,7 +12,7 @@ const Dashboard = () => {
     async function fetchdata() {
       //console.log("data fetching in the dashboard starts...!!")
       const data = await api.get("/users/allUser");
-      const resData = await data.json();
+      const resData = data;
       //console.log("response received", resData);
       dispatch(setUserDetails(resData.data));
       //onsole.log("Action is dispatched in the fetchdata function")

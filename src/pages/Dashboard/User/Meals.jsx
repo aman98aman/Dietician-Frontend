@@ -21,7 +21,7 @@ const Meals = () => {
                   JSON.stringify({ email: decoded.userData.email }),
                 );
 
-                const jsonResponse = await response.json();
+                const jsonResponse = response;
                 console.log("response is", jsonResponse);
                 setMeals(jsonResponse.data[0] || {});
             } catch (e) {

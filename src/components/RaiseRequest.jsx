@@ -28,7 +28,7 @@ const RaiseRequest = () => {
           "/request/postRequest",
           JSON.stringify(reqBody),
         );
-        const resJson = await res.json();
+        const resJson = res;
         if (resJson.success) {
             toast("Succcesfully sent")
             setDisableBtn(false)
