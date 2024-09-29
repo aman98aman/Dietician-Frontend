@@ -277,8 +277,8 @@ function Dashboard2({ onEdit, currentCategory }) {
   };
 
 
-  const handleQuantityChange = (index, value) => {
-    const item = sectionData[activeSection][index];
+  const handleQuantityChange = (index, value, day) => {
+    const item = sectionData[activeSection][day][index];
 
     const quantity = parseFloat(value) || 1;
     console.log("Quantiity", item)
@@ -288,15 +288,15 @@ function Dashboard2({ onEdit, currentCategory }) {
       console.log('value', (nutrientInfo.calories * quantity).toFixed(2))
 
       if (nutrientInfo) {
-        handleTableDataChange(index, 'calories', (nutrientInfo.calories * quantity).toFixed(2));
-        handleTableDataChange(index, 'fiber', (nutrientInfo.fiber * quantity).toFixed(2));
-        handleTableDataChange(index, 'protein', (nutrientInfo.protein * quantity).toFixed(2));
-        handleTableDataChange(index, 'carbs', (nutrientInfo.carbs * quantity).toFixed(2));
-        handleTableDataChange(index, 'fat', (nutrientInfo.fat * quantity).toFixed(2));
+        handleTableDataChange(index, 'calories', (nutrientInfo.calories * quantity).toFixed(2), day);
+        handleTableDataChange(index, 'fiber', (nutrientInfo.fiber * quantity).toFixed(2), day);
+        handleTableDataChange(index, 'protein', (nutrientInfo.protein * quantity).toFixed(2), day);
+        handleTableDataChange(index, 'carbs', (nutrientInfo.carbs * quantity).toFixed(2), day);
+        handleTableDataChange(index, 'fat', (nutrientInfo.fat * quantity).toFixed(2), day);
       }
     }
 
-    handleTableDataChange(index, 'quantity', value);
+    handleTableDataChange(index, 'quantity', value, day);
   };
 
 
@@ -310,14 +310,16 @@ function Dashboard2({ onEdit, currentCategory }) {
     setSectionData(currentCategory?.categories ?? []);
   }, [currentCategory]);
 
-  const handleTableDataChange = (index, field, value) => {
-    const updatedData = [...sectionData[activeSection]];
+  const handleTableDataChange = (index, field, value, day) => {
+    const updatedData = [...sectionData[activeSection]?.[day]];
     updatedData[index][field] = value;
 
     setSectionData({
       ...sectionData,
-      [activeSection]: updatedData
-    });
+      [activeSection]: {
+        ...sectionData[activeSection],
+        [day]: updatedData
+      }});
     console.log("updatedData", sectionData)
   };
 
@@ -339,54 +341,79 @@ function Dashboard2({ onEdit, currentCategory }) {
     }
   };
 
-  const addNewRow = () => {
-    let newChange = [...(sectionData?.[activeSection] ?? [])];
+  const addNewRow = (day) => {
+    let newChange = [...(sectionData?.[activeSection]?.[day] ?? [])];
+    console.log(`%c ${newChange} `, "color:white; background-color: green;")
     newChange?.push({});
-    setSectionData({ ...sectionData, [activeSection]: newChange });
+
+    setSectionData({
+      ...sectionData,
+      [activeSection]: {
+        ...sectionData[activeSection],
+        [day]: newChange
+      }
+    });
+   
   };
 
-  const removeRow = () => {
-    let newChange = [...(sectionData?.[activeSection] ?? [])];
+  const removeRow = (day) => {
+    let newChange = [...(sectionData?.[activeSection]?.[day] ?? [])];
     newChange?.pop();
-    setSectionData({ ...sectionData, [activeSection]: newChange });
+    setSectionData({
+      ...sectionData,
+      [activeSection]: {
+        ...sectionData[activeSection],
+        [day]: newChange
+      }
+    });
   };
 
   const renderTable = () => {
     const currentData = sectionData[activeSection] ?? [];
-    console.log('current', currentData)
+    // const currentData = {'Monday': [{'Workout Type': 'some', 'Name': 'haha'}]} ?? [];
+    console.log('current', sectionData)
     let headers = [];
     let fields = [];
+    let heading = [];
 
     switch (activeSection) {
       case 'Warm up':
+        heading = ['Total body stretching']
         headers = ['Sr. No.', 'Name', 'Time', 'How to do'];
         fields = ['srNo', 'name', 'time', 'howToDo'];
         break;
       case 'Cardio':
+        heading = ['Total body stretching']
         headers = ['Sr. No.', 'Name', 'Time', 'How to do'];
         fields = ['srNo', 'name', 'time', 'howToDo'];
         break;
       case 'Workout':
+        heading = ['MONDAY - CHEST & TRICEPS (HEAVY WORKOUT)', 'TUESDAY - LEGS  (HEAVY WORKOUT)', 'WEDNESDAY - CARDIO', 'WEDNESDAY - BACK & BICEPS  (HEAVY WORKOUT)', 'THURSDAY - SHOULDER & TRAPS  (HEAVY WORKOUT)', 'FRIDAY - ARMS  (HEAVY WORKOUT)']
         headers = ['Workout Type', 'Name', 'Sets', 'Reps', 'Rest', 'How to do'];
         fields = ['workoutType', 'name', 'sets', 'reps', 'rest', 'howToDo'];
         break;
       case 'ABS':
+        heading = ['MONDAY - CORE', 'TUESDAY - OBLIQUES', 'WEDNESDAY - CORE DAY', 'THURSDAY - OBLIQUES', 'FRIDAY - CORE']
         headers = ['Workout Type', 'Name', 'Sets', 'Reps', 'Rest', 'How to do'];
         fields = ['workoutType', 'name', 'sets', 'reps', 'rest', 'howToDo'];
         break;
       case 'Meal':
+        heading = ['MEAL 1 - OATS SMOTHIE (BREAKFAST)', 'MEAL 2 - GREEK YOGURT/CURD', 'MEAL 2 - EGG OMLETE & BREAD TOAST', 'MEAL 3 - CHICKEN VEGGIES', 'MEAL 4 - QUINOA SMOTHIE', 'PRE WOKOUT', 'DURING WOKOUT', 'POST WOKOUT', 'MEAL 5 - CHICKEN BIRYANI (DINNER)', 'MEAL 6 - MILK']
         headers = ['Ingredients', 'Protein', 'Fat', 'Carbs', 'Calories', 'Fiber', 'Quantity'];
         fields = ['name', 'protein', 'fat', 'carbs', 'calories', 'calories', 'quantity'];
         break;
       case 'Grocery List':
+        heading = ['List']
         headers = ['Ingredients', 'Protein', 'Fat', 'Carbs', 'Calories', 'Fibre', 'Quantity'];
         fields = ['ingredients', 'protein', 'fat', 'carbs', 'calories', 'fibre', 'quantity'];
         break;
       case 'Instruction':
+        heading = ['INSTRUCTIONS']
         headers = ['Col1', 'Col2', 'Col3'];
         fields = ['col1', 'col2', 'col3'];
         break;
       case 'Stack':
+        heading = ['SUPPLEMENT STACK']
         headers = ['Sr. No.', 'Supplements', 'QT/Serving', 'Serving'];
         fields = ['srNo', 'supplements', 'qtServing', 'serving'];
         break;
@@ -406,7 +433,7 @@ function Dashboard2({ onEdit, currentCategory }) {
       console.log("onHover", result)
     }
 
-    const handleOnSelect = (value, index, field) => {
+    const handleOnSelect = (value, index, field, day) => {
       // the item selected
       console.log("--------field", field)
       if (activeSection === "Meal") {
@@ -416,20 +443,20 @@ function Dashboard2({ onEdit, currentCategory }) {
         const nutrientInfo = nutritionData[ingredientName];
 
         if (nutrientInfo) {
-          handleTableDataChange(index, 'calories', nutrientInfo.calories);
-          handleTableDataChange(index, 'fiber', nutrientInfo.fiber);
-          handleTableDataChange(index, 'protein', nutrientInfo.protein);
-          handleTableDataChange(index, 'carbs', nutrientInfo.carbs);
-          handleTableDataChange(index, 'fat', nutrientInfo.fat);
+          handleTableDataChange(index, 'calories', nutrientInfo.calories, day);
+          handleTableDataChange(index, 'fiber', nutrientInfo.fiber, day);
+          handleTableDataChange(index, 'protein', nutrientInfo.protein, day);
+          handleTableDataChange(index, 'carbs', nutrientInfo.carbs, day);
+          handleTableDataChange(index, 'fat', nutrientInfo.fat, day);
         }
 
-        handleTableDataChange(index, field, ingredientName);
+        handleTableDataChange(index, field, ingredientName, day);
         return
       }
 
       console.log("onSelect", value, index, field)
 
-      handleTableDataChange(index, field, value.name)
+      handleTableDataChange(index, field, value.name, day)
     }
 
     const handleOnFocus = () => {
@@ -454,7 +481,93 @@ function Dashboard2({ onEdit, currentCategory }) {
       <>
         <section style={{ position: "relative" }} className="stretching-table-section">
           <h3>{activeSection} TABLE</h3>
-          <table className="stretching-table">
+
+
+          {heading.map((day, dayIndex) => (
+            <div key={dayIndex} style={{ marginBottom: "20px" }}>
+              <h4>{day}</h4>
+
+              <table className="stretching-table">
+                <thead>
+                  <tr>
+                    {headers.map((header, index) => (
+                      <th key={index} style={header === "Sr. No." ? { maxWidth: "20px" } : {}}>{header}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+
+                  {currentData[day]?.map((item, index) => {
+                    const calculatedZIndex = 200 - index;
+                    return (
+                      <tr key={index}>
+                        {fields.map((field, idx) => (
+                          < td key={idx} style={field === "srNo" ? { maxWidth: "30px" } : field === "name" ? {} : { maxWidth: "0px" }} >
+                            {
+                              field === "name" ? (
+                                <ReactSearchAutocomplete
+                                  items={items}
+                                  onSearch={handleOnSearch}
+                                  onHover={handleOnHover}
+                                  onSelect={(value) => handleOnSelect(value, index, field, day)}
+                                  onFocus={handleOnFocus}
+                                  formatResult={formatResult}
+                                  showIcon={false}
+                                  className='autocomplete'
+                                  inputSearchString={item?.[field] ?? ""}
+                                  showClear={false}
+                                  styling={{
+                                    borderRadius: "2px",
+                                    boxShadow: "rgba(32, 33, 36, 0.28) 0px 1px 4px 0px 2px",
+                                    width: "100%",
+                                    padding: "0px",
+                                    margin: "0px",
+                                    // outline: "none",
+                                    border: "0px",
+                                    display: "block",
+                                    flexShrink: "0",
+                                    zIndex: calculatedZIndex
+                                  }}
+                                />
+                              ) : field === 'quantity' ? (
+                                <input
+                                  type="number"
+                                  value={item?.[field]}
+                                  onChange={(e) => handleQuantityChange(index, e.target.value, day)}
+                                  style={{ width: '100%' }}
+                                />
+                              ) : field === 'protein' || 'fat' || 'carbs' || 'calories' || 'calories' ? (
+                                <input
+                                  type="text"
+                                  value={item?.[field] || ''}
+                                  onChange={(e) => handleTableDataChange(index, field, e.target.value, day)}
+                                  style={{ width: '100%' }}
+                                />
+                              ) : (
+                                <input
+                                  type="text"
+                                  value={item?.[field] ?? field === "srNo" ? `${index + 1}` : null}
+                                  onChange={(e) => handleTableDataChange(index, field, e.target.value, day)}
+                                  style={field === "srNo" ? { maxWidth: "20px" } : { width: '100%' }}
+                                />
+                              )
+                            }
+
+                          </td>
+                        )
+                        )}
+                      </tr>
+                    )
+                  })}
+                </tbody>
+                <img src="/minus.png" style={{ width: "24px", position: "absolute", bottom: -10, left: -10 }} onClick={() => removeRow(day)} />
+                <img src="/plus.png" style={{ width: "24px", position: "absolute", bottom: -10, right: -10 }} onClick={() => addNewRow(day)} />
+
+              </table>
+            </div>
+          ))}
+
+          {/* <table className="stretching-table">
             <thead>
               <tr>
                 {headers.map((header, index) => (
@@ -529,7 +642,7 @@ function Dashboard2({ onEdit, currentCategory }) {
             </tbody>
             <img src="/minus.png" style={{ width: "24px", position: "absolute", bottom: -10, left: -10 }} onClick={removeRow} />
             <img src="/plus.png" style={{ width: "24px", position: "absolute", bottom: -10, right: -10 }} onClick={addNewRow} />
-          </table>
+          </table> */}
 
         </section >
         <div className="table-notes mt-5">

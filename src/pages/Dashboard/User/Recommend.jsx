@@ -46,37 +46,46 @@ const Recommend = () => {
     const currentData = currentCategory;
     let headers = [];
     let fields = [];
+    let heading = [];
 
     switch (activeSection) {
       case 'Warm up':
+        heading = ['Total body stretching']
         headers = ['Sr. No.', 'Name', 'Time', 'How to do'];
         fields = ['srNo', 'name', 'time', 'howToDo'];
         break;
       case 'Cardio':
+        heading = ['Total body stretching']
         headers = ['Sr. No.', 'Name', 'Time', 'How to do'];
         fields = ['srNo', 'name', 'time', 'howToDo'];
         break;
       case 'Workout':
+        heading = ['MONDAY - CHEST & TRICEPS (HEAVY WORKOUT)', 'TUESDAY - LEGS  (HEAVY WORKOUT)', 'WEDNESDAY - CARDIO', 'WEDNESDAY - BACK & BICEPS  (HEAVY WORKOUT)', 'THURSDAY - SHOULDER & TRAPS  (HEAVY WORKOUT)', 'FRIDAY - ARMS  (HEAVY WORKOUT)']
         headers = ['Workout Type', 'Name', 'Sets', 'Reps', 'Rest', 'How to do'];
         fields = ['workoutType', 'name', 'sets', 'reps', 'rest', 'howToDo'];
         break;
       case 'ABS':
+        heading = ['MONDAY - CORE', 'TUESDAY - OBLIQUES', 'WEDNESDAY - CORE DAY', 'THURSDAY - OBLIQUES', 'FRIDAY - CORE']
         headers = ['Workout Type', 'Name', 'Sets', 'Reps', 'Rest', 'How to do'];
         fields = ['workoutType', 'name', 'sets', 'reps', 'rest', 'howToDo'];
         break;
       case 'Meal':
+        heading = ['MEAL 1 - OATS SMOTHIE (BREAKFAST)', 'MEAL 2 - GREEK YOGURT/CURD', 'MEAL 2 - EGG OMLETE & BREAD TOAST', 'MEAL 3 - CHICKEN VEGGIES', 'MEAL 4 - QUINOA SMOTHIE', 'PRE WOKOUT', 'DURING WOKOUT', 'POST WOKOUT', 'MEAL 5 - CHICKEN BIRYANI (DINNER)', 'MEAL 6 - MILK']
         headers = ['Ingredients', 'Protein', 'Fat', 'Carbs', 'Calories', 'Fiber', 'Quantity'];
         fields = ['name', 'protein', 'fat', 'carbs', 'calories', 'calories', 'quantity'];
         break;
       case 'Grocery List':
+        heading = ['List']
         headers = ['Ingredients', 'Protein', 'Fat', 'Carbs', 'Calories', 'Fibre', 'Quantity'];
         fields = ['ingredients', 'protein', 'fat', 'carbs', 'calories', 'fibre', 'quantity'];
         break;
       case 'Instruction':
+        heading = ['INSTRUCTIONS']
         headers = ['Col1', 'Col2', 'Col3'];
         fields = ['col1', 'col2', 'col3'];
         break;
       case 'Stack':
+        heading = ['SUPPLEMENT STACK']
         headers = ['Sr. No.', 'Supplements', 'QT/Serving', 'Serving'];
         fields = ['srNo', 'supplements', 'qtServing', 'serving'];
         break;
@@ -88,7 +97,46 @@ const Recommend = () => {
       <>
         <section style={{ position: "relative" }} className="stretching-table-section">
           <h3>{activeSection} TABLE</h3>
-          <table className="stretching-table">
+
+          {heading.map((day, dayIndex) => {
+            const dayData = currentCategory?.categories?.[activeSection]?.[day] ?? []; // Adjust to fetch day-specific data
+
+            return ( // Add return here
+              <div key={dayIndex} style={{ marginBottom: "20px" }}>
+                <h4>{day}</h4>
+
+                <table className="stretching-table">
+                  <thead>
+                    <tr>
+                      {headers.map((header, index) => (
+                        <th key={index}>{header}</th>
+                      ))}
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {dayData.length > 0 ? ( // Check if there is any data for the day
+                      dayData.map((item, index) => (
+                        <tr key={index}>
+                          {fields.map((field, idx) => (
+                            <td key={idx}>
+                              <p>{item?.[field] ?? ""}</p>
+                            </td>
+                          ))}
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan={fields.length}>No data available for {day}</td> {/* Empty state if no data */}
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            );
+          })}
+
+          {/* <table className="stretching-table">
             <thead>
               <tr>
                 {headers.map((header, index) => (
@@ -97,7 +145,7 @@ const Recommend = () => {
               </tr>
             </thead>
             <tbody>
-              {currentData && currentData?.categories?.[activeSection]?.map((item, index) => (
+              {currentData && currentData?.categories?.[activeSection].[day]?.map((item, index) => (
                 <tr key={index}>
                   {fields.map((field, idx) => (
                     <td key={idx}>
@@ -108,7 +156,9 @@ const Recommend = () => {
 
               ))}
             </tbody>
-          </table>
+          </table> */}
+
+
         </section>
         <div className="table-notes mt-5">
           <p>Modify the table content as needed.</p>
