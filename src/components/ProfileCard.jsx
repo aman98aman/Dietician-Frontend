@@ -9,16 +9,20 @@ const ProfileCard = () => {
       <div className="flex flex-wrap justify-center rounded px-2">
         <div className="h-auto w-full border bg-white shadow-lg dark:border-0 dark:bg-slate-900 md:w-2/4 lg:w-1/4">
           <div className="p-6">
-            <div className="max-w-100 mb-6 flex h-64 items-center justify-center rounded-xl bg-gray-300 dark:bg-slate-950">
-            <img src={arsh2} alt="arsh pic" className="h-[100%] rounded-2xl lg:mt- p-3 xl:p-0 xl:mt-5 lg:h-auto w-full"  />
+            <div className="max-w-100 mb-6 flex h-fit items-center justify-center rounded-xl bg-gray-300 p-4 dark:bg-slate-950">
+              <img
+                src={arsh2}
+                alt="arsh pic"
+                className="h-[100%] w-full rounded-2xl p-3  lg:h-auto xl:p-0"
+              />
             </div>
-            <h1 className="mb-2 mt-16 text-2xl font-bold dark:text-white xl:mt-9">
-            Arsh sandhu
+            <h1 className="mb-2 mt-16 text-2xl font-bold dark:text-white max-lg:mt-6 xl:mt-9">
+              Arsh sandhu
             </h1>
             <h2 className="mb-4 text-lg text-gray-600 dark:text-slate-300">
               Dietician & BodyBuilder
             </h2>
-            {/* Contact Info*/} 
+            {/* Contact Info*/}
             {/* Hello */}
             <div className="mb-2 flex items-center rounded-full bg-gray-200 p-2 dark:bg-slate-950">
               <svg
@@ -48,7 +52,7 @@ const ProfileCard = () => {
               </svg>
 
               <p className="ml-2 text-gray-600 dark:text-slate-300 md:overflow-hidden">
-              info@arshsandhufitness.com
+                info@arshsandhufitness.com
               </p>
             </div>
             {/* Address */}
@@ -71,7 +75,7 @@ const ProfileCard = () => {
                 Chandigarh, India
               </p>
             </div>
-            <div className="flex xl:gap-16 md:gap-8">
+            <div className="flex justify-evenly">
               {/* Twitterr */}
               <a
                 href="https://www.instagram.com/arshsandhu713?igsh=MWZnZ2V5cDE5c2s4Mw%3D%3D&utm_source=qr"
@@ -129,12 +133,11 @@ const ProfileCard = () => {
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
-                 <path
+                  <path
                     fillRule="evenodd"
                     d="M12 2.2c2.7 0 3.1 0 4.2.1 1 .1 1.7.2 2.4.4.6.2 1.1.5 1.6.9.4.4.7.9.9 1.6.2.7.3 1.4.4 2.4.1 1.1.1 1.4.1 4.2s0 3.1-.1 4.2c-.1 1-.2 1.7-.4 2.4-.2.6-.5 1.1-.9 1.6-.4.4-.9.7-1.6.9-.7.2-1.4.3-2.4.4-1.1.1-1.4.1-4.2.1s-3.1 0-4.2-.1c-1-.1-1.7-.2-2.4-.4-.6-.2-1.1-.5-1.6-.9-.4-.4-.7-.9-.9-1.6-.2-.7-.3-1.4-.4-2.4-.1-1.1-.1-1.4-.1-4.2s0-3.1.1-4.2c.1-1 .2-1.7.4-2.4.2-.6.5-1.1.9-1.6.4-.4.9-.7 1.6-.9.7-.2 1.4-.3 2.4-.4 1.1-.1 1.4-.1 4.2-.1m0-2.2c-2.8 0-3.2 0-4.3.1-1.1.1-1.8.2-2.6.5a5.8 5.8 0 0 0-2.1 1.2A5.8 5.8 0 0 0 2.8 4c-.3.8-.4 1.5-.5 2.6-.1 1.1-.1 1.5-.1 4.3s0 3.2.1 4.3c.1 1.1.2 1.8.5 2.6.3.8.7 1.4 1.2 2.1a5.8 5.8 0 0 0 2.1 1.2c.8.3 1.5.4 2.6.5 1.1.1 1.5.1 4.3.1s3.2 0 4.3-.1c1.1-.1 1.8-.2 2.6-.5.8-.3 1.4-.7 2.1-1.2a5.8 5.8 0 0 0 1.2-2.1c.3-.8.4-1.5.5-2.6.1-1.1.1-1.5.1-4.3s0-3.2-.1-4.3c-.1-1.1-.2-1.8-.5-2.6a5.8 5.8 0 0 0-1.2-2.1A5.8 5.8 0 0 0 19.8 2c-.8-.3-1.5-.4-2.6-.5-1.1-.1-1.5-.1-4.3-.1zM12 6.8a5.2 5.2 0 1 0 0 10.4 5.2 5.2 0 0 0 0-10.4zm0 8.6a3.4 3.4 0 1 1 0-6.8 3.4 3.4 0 0 1 0 6.8zm6.4-10a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"
                     clipRule="evenodd"
-                 />
-
+                  />
                 </svg>
               </a>
             </div>
@@ -145,17 +148,20 @@ const ProfileCard = () => {
             Personal Details
           </h2>
           <p className="mb-4 md:line-clamp-3">
-          Residing in a tranquil countryside, I have dedicated over five years to guiding individuals towards
-          healthier lifestyles through personalized training and dietary plans. With a track record of a
-          iding over 500 people, I bring a wealth of experience and commitment to each clients journey.
+            Residing in a tranquil countryside, I have dedicated over five years
+            to guiding individuals towards healthier lifestyles through
+            personalized training and dietary plans. With a track record of a
+            iding over 500 people, I bring a wealth of experience and commitment
+            to each clients journey.
           </p>
           <h3 className="mb-2 text-xl font-bold">
             The Healthy Life Style For All
           </h3>
           <p className="mb-4 md:line-clamp-3">
-          Join me on a journey to better health and vitality. Every person is unique, and I understand that.
-          From tailored workouts to custom meal plans, I help individuals adopt sustainable habits that 
-          promote long-term well-being.
+            Join me on a journey to better health and vitality. Every person is
+            unique, and I understand that. From tailored workouts to custom meal
+            plans, I help individuals adopt sustainable habits that promote
+            long-term well-being.
           </p>
           {/* <ul className="mb-4 ms-6 list-disc">
             <li>
@@ -170,16 +176,25 @@ const ProfileCard = () => {
             Make real time a health improvements
           </h3>
           <p className="mb-4 ">
-          I use the latest research and practical techniques to customize health solutions. By engaging clients in interactive exercises and nutritional guidance, I ensure progress towards their goals. With real-time adjustments, we optimize results for lasting health improvements.
+            I use the latest research and practical techniques to customize
+            health solutions. By engaging clients in interactive exercises and
+            nutritional guidance, I ensure progress towards their goals. With
+            real-time adjustments, we optimize results for lasting health
+            improvements.
           </p>
           <ol className="mb-4 ms-6 list-decimal">
             <li>
-            I translate complex health concepts into practical solutions. By integrating backend ideas into client-focused strategies, I make wellness accessible and achievable. With clear guidance and support, clients confidently embrace positive changes.
+              I translate complex health concepts into practical solutions. By
+              integrating backend ideas into client-focused strategies, I make
+              wellness accessible and achievable. With clear guidance and
+              support, clients confidently embrace positive changes.
             </li>
             <li>
-            Together, we foster a supportive community that celebrates achievements and overcomes obstacles. Through shared experiences, we inspire each other to reach new levels of wellness. With teamwork, we create a healthier, happier future for everyone.
+              Together, we foster a supportive community that celebrates
+              achievements and overcomes obstacles. Through shared experiences,
+              we inspire each other to reach new levels of wellness. With
+              teamwork, we create a healthier, happier future for everyone.
             </li>
-            
           </ol>
           <p className="md:line-clamp-3">
             User generated content in real-time will have multiple touchpoints

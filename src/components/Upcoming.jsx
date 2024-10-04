@@ -16,17 +16,17 @@ import PCOSBack from '../assets/PCOS back.svg'
 const Upcoming = () => {
   return (
     <div className="bg-gray-100 dark:bg-slate-900">
-      <div className="mx-20 flex flex-wrap items-center justify-between gap-4 bg-none p-10">
+      <div className="mx-20 flex flex-wrap items-center justify-between gap-4 bg-none p-10 max-sm:p-8 max-sm:">
         <div className="flex flex-col">
           <h1 className="text-md font-bold text-red-500">WHY DIET IS IMPORTANT</h1>
-          <h2 className="text-4xl text-gray-600 dark:text-gray-200">HOW A HEALTHY DIET CAN IMPROVE YOUR HEALTH</h2>
+          <h2 className="text-4xl text-gray-600 dark:text-gray-200 max-sm:text-xl">HOW A HEALTHY DIET CAN IMPROVE YOUR HEALTH</h2>
         </div>
       </div>
 
       <div className="flex flex-wrap justify-center bg-none px-3">
         <div className="flex max-w-7xl flex-wrap justify-center">
           {/* First Line of Boxes */}
-          <div className="flex flex-wrap w-full justify-center">
+          <div className="flex flex-wrap w-full justify-center max-sm:flex-col max-sm:h-fit">
 
             {
               cardRow1.map((data, index) => (<CardFlip key={index} title={data.title} coverImage={data.coverImage} content={data.content} bgImage={data.bgImage} />))
@@ -35,7 +35,7 @@ const Upcoming = () => {
           </div>
 
           {/* Second Line of Boxes */}
-          <div className="flex flex-wrap w-full justify-center">
+          <div className="flex flex-wrap w-full justify-center max-sm:flex-col max-sm:h-fit">
 
             {
               cardRow2.map((data, index) => (<CardFlip key={index} title={data.title} coverImage={data.coverImage} content={data.content} bgImage={data.bgImage} />))

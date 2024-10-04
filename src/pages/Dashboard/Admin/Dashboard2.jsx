@@ -557,7 +557,7 @@ function Dashboard2({ onEdit, currentCategory }) {
 
           </div>
 
-          <div className="content-buttons">
+          <div className="content-buttons flex flex-wrap ">
             <button
               onClick={() => setActiveSection('Warm up')}
               className={activeSection === 'Warm up' ? 'active-section' : 'tab'}

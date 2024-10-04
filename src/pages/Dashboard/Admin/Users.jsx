@@ -5,8 +5,8 @@ import { useSelector } from "react-redux";
 const Users = () => {
   const allUser = useSelector((state) => state.allUser.userArr || []);
   return (
-    <main className="mt-[95%] mx-auto my-6 p-10 md:mt-[12%] lg:mt-0">
-      <h1 className="mb-8 text-3xl text-black">
+    <main className="mt-20 py-8 px-3 max-lg:p-4 lg:mt-0 ">
+      <h1 className="mb-8 text-3xl text-black max-lg:mb-3">
         <i className="ai ai-user-fill mr-3 text-2xl text-black"></i>
         Users
       </h1>
@@ -81,10 +81,10 @@ const Users = () => {
               </div>
             </div>
           </div>
-          <label for="table-search" className="sr-only">
+          <label for="table-search" className="sr-only ">
             Search
           </label>
-          <div className="relative">
+          <div className="relative border-4 ">
             <div className="rtl:inset-r-0 pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
               <svg
                 className="h-4 w-4 text-gray-500 dark:text-gray-400"
