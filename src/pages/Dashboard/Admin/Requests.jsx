@@ -75,7 +75,7 @@ const Requests = () => {
   }, []);
 
   return (
-    <main className="mx-8 my-4 mt-[95%] p-2 md:mt-[12%] lg:mx-16 lg:mt-0">
+    <main className="mx-8 my-4 mt-20 p-2 md:mt-[12%] lg:mx-16 lg:mt-0">
       <h1 className="my-4 mb-8 text-3xl text-black">
         <i className="ai ai-hands-clapping-fill mr-3 text-2xl text-black"></i>
         Requests

@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import VegeIcon from '../../../assets/vege.png';
 import { IoIosArrowDroprightCircle } from "react-icons/io";
+import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
 
 
 function Links() {
@@ -111,7 +112,10 @@ function Links() {
 }
 
 function Sidebar2() {
-  const [mobileView, setMobileView] = useState(true)
+  const [mobileView, setMobileView] = useState(true);
+
+  const [toggleMenu, setToggleMenu] = useState(false);
+
 
   const showSidebar = () => {
     setMobileView((prev) => !prev)
@@ -119,45 +123,55 @@ function Sidebar2() {
 
   return (
 
-
-
-
     <>
-
-      <div className="sidebar-container" style={{ position: "absolute", width: "30px", height: "fit-content", cursor: "pointer", zIndex: 99999 }} onClick={showSidebar}>
-        <IoIosArrowDroprightCircle size={30} />
-      </div>
-
-      {
-        mobileView && (
-          <nav style={{ width: "17%", position: "relative" }}
-            className={
-              "text-black shadow-lg lg:block lg:h-screen lg:sticky lg:left-0 lg:top-0 md:flex md:w-screen md:fixed lg:w-full"
-              // "hidden min-h-svh max-w-80 rounded-3xl bg-white shadow-lg lg:sticky lg:left-0 lg:top-0 lg:block"
-            }
+     
+          <nav
+          className={
+            "text-black h-fit  max-lg:w-screen z-[100000] max-lg:flex max-lg:items-center max-lg:fixed  bg-white max-lg:top-0 "
+            // "hidden min-h-svh max-w-80 rounded-3xl bg-white shadow-lg lg:sticky lg:left-0 lg:top-0 lg:block"
+          }
+        >
+          {/* <button
+            className="text-red absolute right-4 top-4 lg:hidden"
+    
           >
-            <button
-              className="text-red absolute right-4 top-4 lg:hidden"
-
-            >
-              <i className="ai ai-x-bold text-2xl"></i>
-            </button>
-            <div className="flex items-center p-4 pt-6" style={{ width: "555%" }}>
-              <img
-                className="bg-slate-10 mx-2 h-16 w-16 rounded-full border"
-                src="https://static.vecteezy.com/system/resources/previews/019/900/306/non_2x/happy-young-cute-illustration-face-profile-png.png"
-                alt="profile"
-              />
-              <div className="mx-2">
-                <h3 className="font-heading text-sm">Welcome,</h3>
-                <h3 className="font-paragraph text-xl"> Admin</h3>
-              </div>
+            <i className="ai ai-x-bold text-2xl"></i>
+          </button> */}
+          <div className="flex items-center p-4 pt-6 max-lg:py-2" style={{width: "555%"}}> 
+            <img
+              className="bg-slate-10 mx-2 h-16 w-16 rounded-full border"
+              src="https://static.vecteezy.com/system/resources/previews/019/900/306/non_2x/happy-young-cute-illustration-face-profile-png.png"
+              alt="profile"
+            />
+            <div className="mx-2">
+              <h3 className="font-heading text-sm">Welcome,</h3>
+              <h3 className="font-paragraph text-xl"> Admin</h3>
             </div>
-            <hr />
-            <Links />
-          </nav>
-        )
-      }
+          </div>
+          <hr />
+        <div className="max-lg:hidden">  <Links /></div>
+        <div className="mr-6 lg:hidden">
+        {toggleMenu ? (
+                  <RiCloseLine
+                    className="text-gray-700"
+                    size={30}
+                    onClick={() => setToggleMenu(false)}
+                  />
+                ) : (
+                  <RiMenu3Line
+                    className="text-gray-700"
+                    size={30}
+                    onClick={() => setToggleMenu(true)}
+                  />
+                )}
+                {toggleMenu && (
+                  <div className="absolute right-2 flex w-[15em] flex-col gap-4  rounded-xl bg-white shadow-2xl  p-5 font-manrope text-gray-700">
+                   <Links />
+                  </div>
+                )}
+        </div>
+        </nav>
+   
 
     </>
 

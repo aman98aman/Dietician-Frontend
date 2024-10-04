@@ -5,8 +5,8 @@ import logo from "../assets/giphy.gif";
 const Footer = () => {
   return (
     <footer className="bg-black text-white py-8">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-wrap justify-between">
+      <div className="container mx-auto px-4 ">
+        <div className="flex flex-wrap justify-between max-lg:justify-center">
           {/* Logo and Address */}
           <div className="w-full md:w-1/4 mb-4">
           <div className="flex flex-1 items-center justify-between">

@@ -19,7 +19,7 @@ const Navbar = () => {
 
     const removingItem = localStorage.removeItem("dietToken");
     console.log("removing item", removingItem);
-    navigate("/");
+    navigate("./");
   }
 
   useEffect(()=>{
@@ -68,7 +68,7 @@ const Navbar = () => {
           onClick={toggleMenu}
         >
           <svg
-            className="fill-current text-gray-900 dark:text-gray-200"
+            className="fill-current text-gray-100 dark:text-gray-200"
             xmlns="http://www.w3.org/2000/svg"
             width="20"
             height="20"
@@ -83,7 +83,7 @@ const Navbar = () => {
           className={`w-full lg:flex lg:w-auto lg:items-center ${isOpen ? "block" : "hidden"}`}
           id="menu"
         >
-          <nav>
+          <nav className="max-lg:absolute max-lg:right-2 max-lg:bg-white max-lg:rounded-xl max-lg:p-2 max-lg:text-gray-800">
             <ul className="items-center gap-x-5 pt-4 text-center text-xl md:gap-x-4 lg:flex lg:pt-0  lg:text-lg">
               <li className="py-2 lg:py-0 ">
                 <a
@@ -170,12 +170,12 @@ const Navbar = () => {
                               UserProfile
                             </Link>}
 
-                            {(decoded.userData.isUser) && <Link
+                            {/* {(decoded.userData.isUser) && <Link
                               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
                               to={"/raiseRequest"}
                             >
                               Raise A Request
-                            </Link>}
+                            </Link>} */}
 
                             <button className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left" onClick={logoutHandler}>Logout</button>
                           </div>

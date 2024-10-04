@@ -40,19 +40,19 @@ const RaiseRequest = () => {
 
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-100">
+        <div className="flex justify-center items-center h-fit max-xl:w-[27em] max-lg:w-[18em] ">
             <ToastContainer />
-            <form className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-                <h2 className="text-2xl font-bold mb-4 text-center">Submit Your Request</h2>
+            <form className="bg-white p-4 rounded-lg shadow-lg w-full max-w-md border">
+                <h2 className="text-lg font-bold mb-4 text-center">Submit Your Request</h2>
 
 
 
-                <div className="mb-4">
-                    <label htmlFor="description" className="block text-gray-700 font-medium mb-2">Description</label>
+                <div className="mb-3">
+                    <label htmlFor="description" className="block text-gray-700 text-center font-medium text-sm mb-2">Description</label>
                     <input
                         type="text"
                         id="description"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="Enter description"
                         ref={inputRef}
                     />

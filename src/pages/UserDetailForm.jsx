@@ -202,7 +202,7 @@ function UserDetailForm() {
           className="h-full w-full object-cover lg:object-center"
         />
       </div>
-      <ToastContainer />
+      <ToastContainer/>
     </section>
   );
 }

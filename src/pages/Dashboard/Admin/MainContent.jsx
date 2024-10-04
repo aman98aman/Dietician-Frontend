@@ -20,7 +20,7 @@ const MainContent = ({ categories, setCategories }) => {
   };
 
   return (
-    <div className={styles.mainContent}>
+    <div className={styles.mainContent} >
       <header className={styles.header}>
         <h1 className={styles.title}>DIET</h1>
         <div className={styles.buttonContainer}>

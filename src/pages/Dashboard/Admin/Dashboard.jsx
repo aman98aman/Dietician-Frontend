@@ -27,13 +27,13 @@ const Dashboard = () => {
 
   //console.log("Dashboard is runned")
   return (
-    <div className="flex">
-      <header className="absolute w-full md:w-72 md:min-w-72 lg:relative">
+    <div className="grid grid-cols-6 max-lg:flex max-lg:flex-col">
+      <header className="w-full col-span-1 sticky top-0 h-fit z-[100000000]">
         <Sidebar />
       </header>
-      <main className="container h-full min-h-screen px-2 text-black">
-        <button
-          className="m-2 rounded-md p-2 shadow lg:hidden"
+      <main className="col-span-5 w-full h-full min-h-screen px-2  text-black">
+        {/* <button
+          className="m-2 rounded-md p-2 shadow lg:hidden border-4 "
           type="button"
           onClick={() => setToggle(!toggle)}
         >
@@ -52,7 +52,7 @@ const Dashboard = () => {
               d="M4 6h16M4 12h16M4 18h16"
             ></path>{" "}
           </svg>
-        </button>
+        </button> */}
 
         <Outlet />
       </main>

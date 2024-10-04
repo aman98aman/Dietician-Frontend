@@ -7,7 +7,7 @@ const Home = () => {
   console.log("userCount is ", typeof userCount, userCount)
   return (
     <>
-      <main className="mt-[95%] mx-8 my-4 p-2 lg:mx-16 md:mt-[12%] lg:mt-0">
+      <main className="mt-20 mx-8 my-4 p-2  lg:mt-0">
         <h1 className="my-4 mb-8 text-3xl text-black">
           <i className="ai ai-house-line-fill mr-3 text-2xl text-black"></i>
           Home
