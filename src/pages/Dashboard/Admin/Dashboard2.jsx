@@ -216,6 +216,7 @@ export const initialData = {
 function Dashboard2({ onEdit, currentCategory }) {
   const [description, setDescription] = useState("");
   const [activeSection, setActiveSection] = useState('Warm up');
+  const [getDietData ,setGetDietData]= useState('')
   const [sectionData, setSectionData] = useState(initialData);
   const [items, setItems] = useState(tabData[activeSection ? activeSection : null]);
 
@@ -329,18 +330,39 @@ function Dashboard2({ onEdit, currentCategory }) {
 
   useEffect(() => {
     onEdit({ categories: sectionData });
-  }, [sectionData]);
+  }, []);
 
   useEffect(() => {
     onEdit({ description: description });
-  }, [description]);
+  }, []);
 
   const save = async () => {
-    if (currentCategory && currentCategory?._id) {
-      await api.patch(`/diet/editMeal/${currentCategory?._id}`, { ...currentCategory });
+    try {
+      if (currentCategory && currentCategory?._id) {
+      const response = await api.patch(`/diet/editMeal/${currentCategory?._id}`, { ...currentCategory });
+      if(response){
+        alert('seccusss fully created')
+      }
+      }
+    } catch (error) {
+      console.log(error)
     }
   };
-
+  // get all diet from database 
+  useEffect(()=>{
+    fetchDiet();
+  },[])
+const fetchDiet = async ()=>{
+  try {
+    const response = await api.get(`diet/getMeal`);
+    if(response){
+      setGetDietData(response.data)
+      console.log(response.data)
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
   const addNewRow = (day) => {
     let newChange = [...(sectionData?.[activeSection]?.[day] ?? [])];
     console.log(`%c ${newChange} `, "color:white; background-color: green;")
@@ -479,6 +501,12 @@ function Dashboard2({ onEdit, currentCategory }) {
 
     return (
       <>
+      <label className=' my-2' htmlFor="fruits">Recent Profile</label>
+        <select id="fruits">
+          {getDietData && getDietData.map(ele=> (
+            <option key={ele._id} value={ele.name}>{ele.name} from {ele.description}</option>
+          ))}
+    </select>
         <section style={{ position: "relative" }} className="stretching-table-section">
           <h3>{activeSection} TABLE</h3>
 

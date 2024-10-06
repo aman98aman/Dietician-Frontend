@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import LineChart from "../../../components/LineChart";
 
 
 const Home = () => {
@@ -53,6 +54,7 @@ const Home = () => {
 
         <section className="my-7 rounded-lg bg-white p-20 shadow-md">
           <div className="text-center text-slate-400">User Growth Graph</div>
+          <LineChart Title={'User'} User={userCount?.length}/>
         </section>
 
         <section className="my-7 rounded-lg bg-white p-10 shadow-md">

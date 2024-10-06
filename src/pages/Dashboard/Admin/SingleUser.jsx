@@ -4,6 +4,7 @@ import { toast, ToastContainer } from "react-toastify";
 import Meal from './Meal';
 import getProfilePic from '../../../sideEffects/getProfilePic';
 import api from "../../../components/AxiosInterceptor";
+import LineChart from '../../../components/LineChart';
 
 const ImageComponent = ({ gifData }) => {
   // Assuming gifData is the base64 encoded GIF image data
@@ -425,6 +426,7 @@ const SingleUser = () => {
             </h2>
             <span className="text-6xl text-lime-500">Graph</span>
             <p className="mt-4 text-xs">here</p>
+          <LineChart Title={'Weight'} User={location.state.userData.weight}/>
           </div>
         </div>
       </section>

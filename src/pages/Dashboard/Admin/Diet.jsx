@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./Diet.css";
 import Sidebar2 from "./Sidebar2";
 import MainContent from "./MainContent";
