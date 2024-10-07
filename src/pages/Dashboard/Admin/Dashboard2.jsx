@@ -4,6 +4,7 @@ import './Dashboard2.css';
 import api from "../../../components/AxiosInterceptor.js";
 import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 import { border } from '@chakra-ui/react';
+import axios from 'axios';
 
 
 const tabData = {
@@ -216,7 +217,8 @@ export const initialData = {
 function Dashboard2({ onEdit, currentCategory }) {
   const [description, setDescription] = useState("");
   const [activeSection, setActiveSection] = useState('Warm up');
-  const [getDietData ,setGetDietData]= useState('')
+  const [userPlans, setUserPlans] = useState([]);
+  const [selectedPlan, setSelectedPlan] = useState(currentCategory?.categories ?? {});
   const [sectionData, setSectionData] = useState(initialData);
   const [items, setItems] = useState(tabData[activeSection ? activeSection : null]);
 
@@ -314,12 +316,13 @@ function Dashboard2({ onEdit, currentCategory }) {
   const handleTableDataChange = (index, field, value, day) => {
     const updatedData = [...sectionData[activeSection]?.[day]];
     updatedData[index][field] = value;
+    
 
     setSectionData({
       ...sectionData,
       [activeSection]: {
         ...sectionData[activeSection],
-        [day]: updatedData
+        [day]: updatedData,
       }});
     console.log("updatedData", sectionData)
   };
@@ -356,13 +359,35 @@ const fetchDiet = async ()=>{
   try {
     const response = await api.get(`diet/getMeal`);
     if(response){
-      setGetDietData(response.data)
+      setUserPlans(response.data)
       console.log(response.data)
     }
   } catch (error) {
     console.log(error)
   }
 }
+const renderDropdown = (section) => (
+  <select onChange={(e) => handlePlanSelect(e, section)}>
+    <option value="">Select {section} from another plan</option>
+    {userPlans.map(plan => (
+      <option key={plan.userId} value={plan.userId}>{plan.name} from {plan.description} {section}</option>
+    ))}
+  </select>
+);
+const handlePlanSelect = async (event, section) => {
+  const selectedUserId = event.target.value;
+
+  if (selectedUserId) {
+    const response = await api.get(`/api/diet/${selectedUserId}`); // Fetch section data
+    const sectionData = response.data[section]; // Adjust based on your API structure
+
+    // Populate the sectionData in your component state
+    setSelectedPlan(prev => ({
+      ...prev,
+      [section]: sectionData,
+    }));
+  }
+};
   const addNewRow = (day) => {
     let newChange = [...(sectionData?.[activeSection]?.[day] ?? [])];
     console.log(`%c ${newChange} `, "color:white; background-color: green;")
@@ -502,11 +527,13 @@ const fetchDiet = async ()=>{
     return (
       <>
       <label className=' my-2' htmlFor="fruits">Recent Profile</label>
-        <select id="fruits">
+      {(activeSection === 'Warm up' || activeSection === 'Cardio' ||  activeSection === 'Workout' || activeSection === 'ABS' || activeSection === 'Meal' || activeSection === 'Stack' || activeSection === 'Grocery List' || activeSection === 'Instruction') && renderDropdown(activeSection)}
+        {/* <select onChange={handleWarmUpChange} id="fruits">
           {getDietData && getDietData.map(ele=> (
             <option key={ele._id} value={ele.name}>{ele.name} from {ele.description}</option>
           ))}
-    </select>
+    </select> */}
+
         <section style={{ position: "relative" }} className="stretching-table-section">
           <h3>{activeSection} TABLE</h3>
 
@@ -699,7 +726,16 @@ const fetchDiet = async ()=>{
           </div>
 
           <div className="content-buttons flex flex-wrap ">
-            <button
+          {['Warm up', 'Cardio', 'Workout', 'ABS', 'Meal', 'Stack', 'Grocery List', 'Instruction'].map(section => (
+              <button
+                key={section}
+                onClick={() => setActiveSection(section)}
+                className={activeSection === section ? 'active-section' : 'tab'}
+              >
+                {section}
+              </button>
+            ))}
+            {/* <button
               onClick={() => setActiveSection('Warm up')}
               className={activeSection === 'Warm up' ? 'active-section' : 'tab'}
             >
@@ -746,11 +782,12 @@ const fetchDiet = async ()=>{
               className={activeSection === 'Instruction' ? 'active-section' : 'tab'}
             >
               Instruction
-            </button>
+            </button> */}
           </div>
           <button className="save-button" onClick={save}>SAVE</button>
         </header>
         {renderTable()}
+        
       </div>
     </div>
   );
@@ -762,3 +799,4 @@ Dashboard2.propTypes = {
 };
 
 export default Dashboard2;
+
